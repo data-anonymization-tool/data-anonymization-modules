@@ -1,0 +1,72 @@
+version: '3.8'
+
+services:
+  web:
+    image: nginx:latest
+    ports:
+      - "8081:80"
+    volumes:
+      - ./nginx:/etc/nginx/conf.d
+    depends_on:
+      - k-anonymity
+      - l-diversity
+      - t-closeness
+    networks:
+      - data-anonymization-tool-network
+
+  k-anonymity:
+    build: ./k-anonymity
+    ports:
+      - "5000:5000"
+    environment:
+      - FLASK_ENV=development
+      - FLASK_APP=k-anonymity.py
+      - FLASK_RUN_HOST=0.0.0.0
+      - FLASK_RUN_PORT=5000
+    volumes:
+      - ./k-anonymity:/app
+    networks:
+      - data-anonymization-tool-network
+
+  l-diversity:
+    build: ./l-diversity
+    ports:
+      - "5001:5001"
+    environment:
+      - FLASK_ENV=development
+      - FLASK_APP=l-diversity.py
+      - FLASK_RUN_HOST=0.0.0.0
+      - FLASK_RUN_PORT=5001
+    volumes:
+      - ./l-diversity:/app
+    networks:
+      - data-anonymization-tool-network
+
+  t-closeness:
+    build: ./t-closeness
+    ports:
+      - "5002:5002"
+    environment:
+      - FLASK_ENV=development
+      - FLASK_APP=t-closeness.py
+      - FLASK_RUN_HOST=0.0.0.0
+      - FLASK_RUN_PORT=5002
+    volumes:
+      - ./t-closeness:/app
+    networks:
+      - data-anonymization-tool-network
+
+networks:
+  frontend:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.20.0.0/16
+          gateway: 172.20.0.1
+
+  data-anonymization-tool-network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.21.0.0/16
+          gateway: 172.21.0.1
