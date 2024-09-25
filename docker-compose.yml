@@ -11,6 +11,14 @@ services:
       - k-anonymity
       - l-diversity
       - t-closeness
+      - gaussian-copula
+      - ctgan-synthesis
+      - tvae-synthesis
+      - dp-laplace
+      - dp-exponential
+      - dp-gaussian
+      - dp-queries-lp
+      - dp-queries-ep
     networks:
       - data-anonymization-tool-network
 
@@ -53,6 +61,118 @@ services:
       - FLASK_RUN_PORT=5002
     volumes:
       - ./t-closeness:/app
+    networks:
+      - data-anonymization-tool-network
+  
+  gaussian-copula:
+    build: ./gaussian-copula
+    ports:
+      - "5003:5003"
+    environment:
+      - FLASK_ENV=development
+      - FLASK_APP=copula.py
+      - FLASK_RUN_HOST=0.0.0.0
+      - FLASK_RUN_PORT=5003
+    volumes:
+      - ./gaussian-copula:/app
+    networks:
+      - data-anonymization-tool-network
+  
+  ctgan-synthesis:
+    build: ./ctgan-synthesis
+    ports:
+      - "5004:5004"
+    environment:
+      - FLASK_ENV=development
+      - FLASK_APP=ctgan.py
+      - FLASK_RUN_HOST=0.0.0.0
+      - FLASK_RUN_PORT=5004
+    volumes:
+      - ./ctgan-synthesis:/app
+    networks:
+      - data-anonymization-tool-network
+  
+  tvae-synthesis:
+    build: ./tvae-synthesis
+    ports:
+      - "5005:5005"
+    environment:
+      - FLASK_ENV=development
+      - FLASK_APP=tvae.py
+      - FLASK_RUN_HOST=0.0.0.0
+      - FLASK_RUN_PORT=5005
+    volumes:
+      - ./tvae-synthesis:/app
+    networks:
+      - data-anonymization-tool-network
+
+  dp-laplace:
+    build: ./dp-laplace
+    ports:
+      - "5006:5006"
+    environment:
+      - FLASK_ENV=development
+      - FLASK_APP=dp-laplace.py
+      - FLASK_RUN_HOST=0.0.0.0
+      - FLASK_RUN_PORT=5006
+    volumes:
+      - ./dp-laplace:/app
+    networks:
+      - data-anonymization-tool-network
+
+  dp-exponential:
+    build: ./dp-exponential
+    ports:
+      - "5007:5007"
+    environment:
+      - FLASK_ENV=development
+      - FLASK_APP=dp-exponential.py
+      - FLASK_RUN_HOST=0.0.0.0
+      - FLASK_RUN_PORT=5007
+    volumes:
+      - ./dp-exponential:/app
+    networks:
+      - data-anonymization-tool-network
+
+  dp-gaussian:
+    build: ./dp-gaussian
+    ports:
+      - "5008:5008"
+    environment:
+      - FLASK_ENV=development
+      - FLASK_APP=dp-gaussian.py
+      - FLASK_RUN_HOST=0.0.0.0
+      - FLASK_RUN_PORT=5008
+    volumes:
+      - ./dp-gaussian:/app
+    networks:
+      - data-anonymization-tool-network
+
+  dp-queries-lp:
+    build: ./dp-queries-lp
+    ports:
+      - "5009:5009"
+    environment:
+      - FLASK_ENV=development
+      - FLASK_APP=dp-queries-lp.py
+      - FLASK_RUN_HOST=0.0.0.0
+      - FLASK_RUN_PORT=5009
+    volumes:
+      - ./dp-queries-lp:/app
+    networks:
+      - data-anonymization-tool-network
+
+  dp-queries-ep:
+    build: ./dp-queries-ep
+    ports:
+      - "5010:5010"
+    environment:
+      - FLASK_ENV=development
+      - FLASK_APP=dp-queries-ep.py
+      - FLASK_RUN_HOST=0.0.0.0
+      - FLASK_RUN_PORT=5010
+    volumes:
+      - ./dp-queries-ep:/app
     networks:
       - data-anonymization-tool-network
 
