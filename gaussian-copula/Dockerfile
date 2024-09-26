@@ -1,17 +1,16 @@
 # Use an official Python runtime as a parent image
-FROM python:3.9-slim
+FROM python:3.9
 
 # Set the working directory in the container
-WORKDIR /usr/src/app
+WORKDIR /app
 
 # Copy the current directory contents into the container at /usr/src/app
-COPY . .
-
+COPY requirements.txt .
 # Install the Python dependencies
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Expose port 5001 for GaussianCopula API
-EXPOSE 5001
+#  Copy the rest of the application code into the container
+COPY copula.py .
 
-# Command to run the Flask app
-CMD ["python", "app.py"]
+# Run the Flask app
+CMD ["flask", "run"]

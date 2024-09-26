@@ -31,4 +31,20 @@ jobs:
           push: true
           tags: ghcr.io/${{ github.repository_owner }}/k-anonymity:latest
 
+      - name: Build and push Docker image for t-closeness
+        uses: docker/build-push-action@v2
+        with:
+          context: ./t-closeness
+          file: ./t-closeness/Dockerfile
+          push: true
+          tags: ghcr.io/${{ github.repository_owner }}/t-closeness:latest
+
+      - name: Build and push Docker image for l-diversity
+        uses: docker/build-push-action@v2
+        with:
+          context: ./l-diversity
+          file: ./l-diversity/Dockerfile
+          push: true
+          tags: ghcr.io/${{ github.repository_owner }}/l-diversity:latest
+
       # Add more steps for other modules similarly
