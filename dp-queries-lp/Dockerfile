@@ -1,5 +1,5 @@
 # Use the official Python image from the Docker Hub
-FROM python:3.12-slim
+FROM python:3.9
 
 # Set the working directory inside the container
 WORKDIR /app
@@ -11,4 +11,6 @@ COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy the Python script into the container
-COPY dp-queries-lp.py /modules/
+COPY dp-queries-lp.py .
+
+CMD ["flask","run"]

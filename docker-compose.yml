@@ -23,7 +23,7 @@ services:
       - data-anonymization-tool-network
 
   k-anonymity:
-    build: ./k-anonymity
+    image: ghcr.io/data-anonymization-tool/k-anonymity:latest
     ports:
       - "5000:5000"
     environment:
@@ -37,7 +37,7 @@ services:
       - data-anonymization-tool-network
 
   l-diversity:
-    build: ./l-diversity
+    image: ghcr.io/data-anonymization-tool/l-diversity:latest
     ports:
       - "5001:5001"
     environment:
@@ -51,7 +51,7 @@ services:
       - data-anonymization-tool-network
 
   t-closeness:
-    build: ./t-closeness
+    image: ghcr.io/data-anonymization-tool/t-closeness:latest
     ports:
       - "5002:5002"
     environment:
@@ -65,7 +65,7 @@ services:
       - data-anonymization-tool-network
   
   gaussian-copula:
-    build: ./gaussian-copula
+    image: ghcr.io/data-anonymization-tool/gaussian-copula:latest
     ports:
       - "5003:5003"
     environment:
@@ -79,7 +79,7 @@ services:
       - data-anonymization-tool-network
   
   ctgan-synthesis:
-    build: ./ctgan-synthesis
+    image: ghcr.io/data-anonymization-tool/ctgan-synthesis:latest
     ports:
       - "5004:5004"
     environment:
@@ -93,7 +93,7 @@ services:
       - data-anonymization-tool-network
   
   tvae-synthesis:
-    build: ./tvae-synthesis
+    image: ghcr.io/data-anonymization-tool/tvae-synthesis:latest
     ports:
       - "5005:5005"
     environment:
@@ -107,7 +107,7 @@ services:
       - data-anonymization-tool-network
 
   dp-laplace:
-    build: ./dp-laplace
+    image: ghcr.io/data-anonymization-tool/dp-laplace:latest
     ports:
       - "5006:5006"
     environment:
@@ -121,7 +121,7 @@ services:
       - data-anonymization-tool-network
 
   dp-exponential:
-    build: ./dp-exponential
+    image: ghcr.io/data-anonymization-tool/dp-exponential:latest
     ports:
       - "5007:5007"
     environment:
@@ -135,7 +135,7 @@ services:
       - data-anonymization-tool-network
 
   dp-gaussian:
-    build: ./dp-gaussian
+    image: ghcr.io/data-anonymization-tool/dp-gaussian:latest
     ports:
       - "5008:5008"
     environment:
@@ -149,7 +149,7 @@ services:
       - data-anonymization-tool-network
 
   dp-queries-lp:
-    build: ./dp-queries-lp
+    image: ghcr.io/data-anonymization-tool/dp-queries-lp:latest
     ports:
       - "5009:5009"
     environment:
@@ -163,7 +163,7 @@ services:
       - data-anonymization-tool-network
 
   dp-queries-ep:
-    build: ./dp-queries-ep
+    image: ghcr.io/data-anonymization-tool/dp-queries-ep:latest
     ports:
       - "5010:5010"
     environment:
@@ -181,12 +181,12 @@ networks:
     driver: bridge
     ipam:
       config:
-        - subnet: 172.20.0.0/16
-          gateway: 172.20.0.1
+        - subnet: 172.30.0.0/16  # Changed subnet here
+          gateway: 172.30.0.1
 
   data-anonymization-tool-network:
     driver: bridge
     ipam:
       config:
-        - subnet: 172.21.0.0/16
-          gateway: 172.21.0.1
+        - subnet: 172.32.0.0/16  # Changed subnet here to avoid conflicts
+          gateway: 172.32.0.1
