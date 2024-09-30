@@ -30,6 +30,7 @@ jobs:
           file: ./k-anonymity/Dockerfile
           push: true
           tags: ghcr.io/${{ github.repository_owner }}/k-anonymity:latest
+          platforms: linux/amd64,linux/arm64
 
       - name: Build and push Docker image for t-closeness
         uses: docker/build-push-action@v3
@@ -38,6 +39,7 @@ jobs:
           file: ./t-closeness/Dockerfile
           push: true
           tags: ghcr.io/${{ github.repository_owner }}/t-closeness:latest
+          platforms: linux/amd64,linux/arm64
 
       - name: Build and push Docker image for l-diversity
         uses: docker/build-push-action@v3
@@ -46,6 +48,7 @@ jobs:
           file: ./l-diversity/Dockerfile
           push: true
           tags: ghcr.io/${{ github.repository_owner }}/l-diversity:latest
+          platforms: linux/amd64,linux/arm64
 
       - name: Build and push Docker image for gaussian-copula
         uses: docker/build-push-action@v3
@@ -54,6 +57,7 @@ jobs:
           file: ./gaussian-copula/Dockerfile
           push: true
           tags: ghcr.io/${{ github.repository_owner }}/gaussian-copula:latest
+          platforms: linux/amd64,linux/arm64
       
       - name: Build and push Docker image for ctgan-synthesis
         uses: docker/build-push-action@v3
@@ -62,6 +66,7 @@ jobs:
           file: ./ctgan-synthesis/Dockerfile
           push: true
           tags: ghcr.io/${{ github.repository_owner }}/ctgan-synthesis:latest
+          platforms: linux/amd64,linux/arm64
 
       - name: Build and push Docker image for tvae-synthesis
         uses: docker/build-push-action@v3
@@ -70,6 +75,7 @@ jobs:
           file: ./tvae-synthesis/Dockerfile
           push: true
           tags: ghcr.io/${{ github.repository_owner }}/tvae-synthesis:latest
+          platforms: linux/amd64,linux/arm64
 
       - name: Build and push Docker image for dp-laplace
         uses: docker/build-push-action@v3
@@ -78,6 +84,7 @@ jobs:
           file: ./dp-laplace/Dockerfile
           push: true
           tags: ghcr.io/${{ github.repository_owner }}/dp-laplace:latest
+          platforms: linux/amd64,linux/arm64
 
       - name: Build and push Docker image for dp-exponential
         uses: docker/build-push-action@v3
@@ -86,6 +93,7 @@ jobs:
           file: ./dp-exponential/Dockerfile
           push: true
           tags: ghcr.io/${{ github.repository_owner }}/dp-exponential:latest
+          platforms: linux/amd64,linux/arm64
 
       - name: Build and push Docker image for dp-gaussian
         uses: docker/build-push-action@v3
@@ -94,6 +102,7 @@ jobs:
           file: ./dp-gaussian/Dockerfile
           push: true
           tags: ghcr.io/${{ github.repository_owner }}/dp-gaussian:latest
+          platforms: linux/amd64,linux/arm64
 
       - name: Build and push Docker image for dp-queries-lp
         uses: docker/build-push-action@v3
@@ -102,6 +111,7 @@ jobs:
           file: ./dp-queries-lp/Dockerfile
           push: true
           tags: ghcr.io/${{ github.repository_owner }}/dp-queries-lp:latest
+          platforms: linux/amd64,linux/arm64
 
       - name: Build and push Docker image for dp-queries-ep
         uses: docker/build-push-action@v3
@@ -110,5 +120,6 @@ jobs:
           file: ./dp-queries-ep/Dockerfile
           push: true
           tags: ghcr.io/${{ github.repository_owner }}/dp-queries-ep:latest
+          platforms: linux/amd64,linux/arm64
 
       # Add more steps for other modules similarly
