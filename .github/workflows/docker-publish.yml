@@ -21,10 +21,10 @@ jobs:
         with:
           registry: ghcr.io
           username: ${{ github.repository_owner }}
-          password: ${{ secrets.GHCR_TOKEN }}
+          password: ${{ secrets.GHCR_TOKEN_2 }}
 
       - name: Build and push Docker image for k-anonymity
-        uses: docker/build-push-action@v2
+        uses: docker/build-push-action@v3
         with:
           context: ./k-anonymity
           file: ./k-anonymity/Dockerfile
@@ -32,7 +32,7 @@ jobs:
           tags: ghcr.io/${{ github.repository_owner }}/k-anonymity:latest
 
       - name: Build and push Docker image for t-closeness
-        uses: docker/build-push-action@v2
+        uses: docker/build-push-action@v3
         with:
           context: ./t-closeness
           file: ./t-closeness/Dockerfile
@@ -40,39 +40,39 @@ jobs:
           tags: ghcr.io/${{ github.repository_owner }}/t-closeness:latest
 
       - name: Build and push Docker image for l-diversity
-        uses: docker/build-push-action@v2
+        uses: docker/build-push-action@v3
         with:
           context: ./l-diversity
           file: ./l-diversity/Dockerfile
           push: true
           tags: ghcr.io/${{ github.repository_owner }}/l-diversity:latest
 
-      # - name: Build and push Docker image for gaussian-copula
-      #   uses: docker/build-push-action@v2
-      #   with:
-      #     context: ./gaussian-copula
-      #     file: ./gaussian-copula/Dockerfile
-      #     push: true
-      #     tags: ghcr.io/${{ github.repository_owner }}/gaussian-copula:latest
+      - name: Build and push Docker image for gaussian-copula
+        uses: docker/build-push-action@v3
+        with:
+          context: ./gaussian-copula
+          file: ./gaussian-copula/Dockerfile
+          push: true
+          tags: ghcr.io/${{ github.repository_owner }}/gaussian-copula:latest
       
-      # - name: Build and push Docker image for ctgan-synthesis
-      #   uses: docker/build-push-action@v2
-      #   with:
-      #     context: ./ctgan-synthesis
-      #     file: ./ctgan-synthesis/Dockerfile
-      #     push: true
-      #     tags: ghcr.io/${{ github.repository_owner }}/ctgan-synthesis:latest
+      - name: Build and push Docker image for ctgan-synthesis
+        uses: docker/build-push-action@v3
+        with:
+          context: ./ctgan-synthesis
+          file: ./ctgan-synthesis/Dockerfile
+          push: true
+          tags: ghcr.io/${{ github.repository_owner }}/ctgan-synthesis:latest
 
-      # - name: Build and push Docker image for tvae-synthesis
-      #   uses: docker/build-push-action@v2
-      #   with:
-      #     context: ./tvae-synthesis
-      #     file: ./tvae-synthesis/Dockerfile
-      #     push: true
-      #     tags: ghcr.io/${{ github.repository_owner }}/tvae-synthesis:latest
+      - name: Build and push Docker image for tvae-synthesis
+        uses: docker/build-push-action@v3
+        with:
+          context: ./tvae-synthesis
+          file: ./tvae-synthesis/Dockerfile
+          push: true
+          tags: ghcr.io/${{ github.repository_owner }}/tvae-synthesis:latest
 
       - name: Build and push Docker image for dp-laplace
-        uses: docker/build-push-action@v2
+        uses: docker/build-push-action@v3
         with:
           context: ./dp-laplace
           file: ./dp-laplace/Dockerfile
@@ -80,7 +80,7 @@ jobs:
           tags: ghcr.io/${{ github.repository_owner }}/dp-laplace:latest
 
       - name: Build and push Docker image for dp-exponential
-        uses: docker/build-push-action@v2
+        uses: docker/build-push-action@v3
         with:
           context: ./dp-exponential
           file: ./dp-exponential/Dockerfile
@@ -88,7 +88,7 @@ jobs:
           tags: ghcr.io/${{ github.repository_owner }}/dp-exponential:latest
 
       - name: Build and push Docker image for dp-gaussian
-        uses: docker/build-push-action@v2
+        uses: docker/build-push-action@v3
         with:
           context: ./dp-gaussian
           file: ./dp-gaussian/Dockerfile
@@ -96,7 +96,7 @@ jobs:
           tags: ghcr.io/${{ github.repository_owner }}/dp-gaussian:latest
 
       - name: Build and push Docker image for dp-queries-lp
-        uses: docker/build-push-action@v2
+        uses: docker/build-push-action@v3
         with:
           context: ./dp-queries-lp
           file: ./dp-queries-lp/Dockerfile
@@ -104,7 +104,7 @@ jobs:
           tags: ghcr.io/${{ github.repository_owner }}/dp-queries-lp:latest
 
       - name: Build and push Docker image for dp-queries-ep
-        uses: docker/build-push-action@v2
+        uses: docker/build-push-action@v3
         with:
           context: ./dp-queries-ep
           file: ./dp-queries-ep/Dockerfile

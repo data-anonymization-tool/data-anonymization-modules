@@ -1,10 +1,7 @@
 from flask import Flask, request, jsonify, send_file
 import pandas as pd
-from sdv.metadata import SingleTableMetadata
-from sdv.single_table import GaussianCopulaSynthesizer
 import os
 import json
-import logging
 
 app = Flask(__name__)
 
@@ -66,11 +63,13 @@ def data_synthesis_gaussian():
         data_to_anonymize = data[columns_to_anonymize]
         other_columns = data.drop(columns=columns_to_anonymize + identifying_attributes)
 
+        from sdv.metadata import SingleTableMetadata
+        from sdv.single_table import GaussianCopulaSynthesizer
         # Create SDV Metadata
         sdv_metadata = SingleTableMetadata()
         sdv_metadata.detect_from_dataframe(data_to_anonymize)
 
-        logging.info("Metadata detected from dataframe: %s", sdv_metadata.to_dict())
+        print("Metadata detected from dataframe: %s", sdv_metadata.to_dict())
 
         # Initialize the GaussianCopulaSynthesizer
         synthesizer = GaussianCopulaSynthesizer(metadata=sdv_metadata)
