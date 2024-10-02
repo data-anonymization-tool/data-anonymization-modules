@@ -4,9 +4,11 @@ import sys
 from flask import Flask, request, jsonify, send_file
 import os
 from werkzeug.utils import secure_filename
-import uuid
+from datetime import datetime
+from flask_cors import CORS
 
 app = Flask(__name__)
+CORS(app)
 
 # Define upload and anonymized file directories
 UPLOAD_FOLDER = os.path.abspath('./uploads')
@@ -36,6 +38,10 @@ def apply_exponential_mechanism(df, column, sensitivity, epsilon):
     
     df[column] = df[column].apply(lambda x: exponential_mechanism(unique_values, utility_func, sensitivity, epsilon))
     return df
+
+@app.route('/dp-exponential/metadata', methods=['GET'])
+def get_metadata():
+    return send_file('dp-exponential.json', as_attachment=False)
 
 @app.route('/dp-exponential', methods=['POST'])
 def apply_exponential():
@@ -77,13 +83,14 @@ def apply_exponential():
             df.drop(columns=direct_identifiers_list, errors='ignore', inplace=True)
 
         if pd.api.types.is_numeric_dtype(df[column]):
-            print(f"Error: Column '{column}' is numerical. Please use the Laplace or Gaussian mechanism for numerical data.")
-            sys.exit(1)
+            return jsonify({"error": f"Column '{column}' is not numerical. Please use the appropriate mechanism for categorical data."}), 400
 
         df = apply_exponential_mechanism(df, column, sensitivity, epsilon)
 
         # Save the anonymized dataset to a file
-        anonymized_filename = f"anonymized_{uuid.uuid4().hex}_{filename}"
+        # Generate timestamp for the filename
+        timestamp = datetime.now().strftime("%Y%m%d%H%M%S")
+        anonymized_filename = f"anonymized_{timestamp}_{filename}"
         anonymized_filepath = os.path.join(app.config['ANONYMIZED_FOLDER'], anonymized_filename)
         df.to_csv(anonymized_filepath, index=False) if file_path.endswith('.csv') else df.to_excel(anonymized_filepath, index=False)
 

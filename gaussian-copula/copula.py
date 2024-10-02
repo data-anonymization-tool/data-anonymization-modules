@@ -10,6 +10,10 @@ TEMP_DIR = "temp_gaussian"
 if not os.path.exists(TEMP_DIR):
     os.makedirs(TEMP_DIR)
 
+@app.route('/gaussian-copula/metadata', methods=['GET'])
+def get_metadata():
+    return send_file('copula.json', as_attachment=False)
+
 # Route for uploading the CSV file and generating synthetic data
 @app.route("/gaussian-copula", methods=["POST"])
 def data_synthesis_gaussian():

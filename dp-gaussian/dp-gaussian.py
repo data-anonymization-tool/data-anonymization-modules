@@ -1,12 +1,13 @@
 import pandas as pd
 import numpy as np
-import sys
 from flask import Flask, request, jsonify, send_file
 import os
 from werkzeug.utils import secure_filename
-import uuid
+from datetime import datetime
+from flask_cors import CORS
 
 app = Flask(__name__)
+CORS(app)
 
 # Define upload and anonymized file directories
 UPLOAD_FOLDER = os.path.abspath('./uploads')
@@ -33,6 +34,10 @@ def apply_gaussian_mechanism(df, column, sensitivity, epsilon, delta):
     print(f"Applying Gaussian mechanism to the numerical column '{column}'")
     df[column] = df[column].apply(lambda x: gaussian_mechanism(x, sensitivity, epsilon, delta))
     return df
+
+@app.route('/dp-gaussian/metadata', methods=['GET'])
+def get_metadata():
+    return send_file('dp-gaussian.json', as_attachment=False)
 
 @app.route('/dp-gaussian', methods=['POST'])
 def apply_gaussian():
@@ -75,13 +80,14 @@ def apply_gaussian():
             df.drop(columns=direct_identifiers_list, errors='ignore', inplace=True)
 
         if not pd.api.types.is_numeric_dtype(df[column]):
-            print(f"Error: Column '{column}' is not numerical. Please use the exponential mechanism for categorical data.")
-            sys.exit(1)
+            return jsonify({"error": f"Column '{column}' is not numerical. Please use the appropriate mechanism for categorical data."}), 400
 
         df = apply_gaussian_mechanism(df, column, sensitivity, epsilon, delta)
 
         # Save the anonymized dataset to a file
-        anonymized_filename = f"anonymized_{uuid.uuid4().hex}_{filename}"
+        # Generate timestamp for the filename
+        timestamp = datetime.now().strftime("%Y%m%d%H%M%S")
+        anonymized_filename = f"anonymized_{timestamp}_{filename}"
         anonymized_filepath = os.path.join(app.config['ANONYMIZED_FOLDER'], anonymized_filename)
         df.to_csv(anonymized_filepath, index=False) if file_path.endswith('.csv') else df.to_excel(anonymized_filepath, index=False)
 

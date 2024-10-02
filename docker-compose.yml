@@ -11,9 +11,9 @@ services:
       - k-anonymity
       - l-diversity
       - t-closeness
-      # - gaussian-copula
-      # - ctgan-synthesis
-      # - tvae-synthesis
+      - gaussian-copula
+      - ctgan-synthesis
+      - tvae-synthesis
       - dp-laplace
       - dp-exponential
       - dp-gaussian

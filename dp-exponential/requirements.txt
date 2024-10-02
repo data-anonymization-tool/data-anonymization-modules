@@ -2,3 +2,5 @@ Flask
 numpy
 pandas
 Werkzeug
+Flask-Cors
+openpyxl

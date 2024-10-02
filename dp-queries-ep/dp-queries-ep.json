@@ -1,0 +1,54 @@
+{
+  "Differentially Private Queries using Exponential": {
+    "description": "Executes queries using the exponential mechanism, ensuring privacy by selecting outputs probabilistically.",
+    "use_case": "Useful in settings where discrete outcomes are preferred while maintaining privacy.",
+    "inputs": {
+      "Column to be Anonymized": {
+        "description": "The categorical column in the dataset that is to be anonymized.",
+        "type": "String"
+      },
+      "Epsilon": {
+        "description": "Privacy budget controlling the randomness of the mechanism.",
+        "type": "Float"
+      },
+      "k": {
+        "description": "The number of top categories to return when using the top-k query.",
+        "type": "Integer"
+      },
+      "Column 2": {
+        "description": "The second categorical column for generating contingency tables or comparing with another column.",
+        "type": "String"
+      },
+      "Query": {
+        "description": "The query to be executed on the data.",
+        "type": "Dropdown",
+        "options": [
+          {
+            "value": "Frequency",
+            "explanation": "Estimates the frequency of each category in the specified column, adding noise for privacy."
+          },
+          {
+            "value": "Mode",
+            "explanation": "Determines the most frequently occurring category in the specified column with added privacy."
+          },
+          {
+            "value": "Entropy",
+            "explanation": "Calculates the entropy of the specified column, providing insights into the distribution of categories."
+          },
+          {
+            "value": "Top-k",
+            "explanation": "Returns the top k categories based on their frequency, ensuring differential privacy."
+          },
+          {
+            "value": "Contingency Table",
+            "explanation": "Generates a contingency table for two categorical variables, allowing for a joint distribution analysis."
+          },
+          {
+            "value": "All Queries",
+            "explanation": "Executes all the available queries and returns the results collectively."
+          }
+        ]
+      }
+    }
+  }
+}

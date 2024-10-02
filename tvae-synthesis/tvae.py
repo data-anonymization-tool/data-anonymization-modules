@@ -10,6 +10,10 @@ TEMP_DIR = "temp_tvae"
 if not os.path.exists(TEMP_DIR):
     os.makedirs(TEMP_DIR)
 
+@app.route('/tvae/metadata', methods=['GET'])
+def get_metadata():
+    return send_file('tvae.json', as_attachment=False)
+
 # Route for uploading the CSV file and generating synthetic data
 @app.route("/tvae", methods=["POST"])
 def data_synthesis_tvae():

@@ -1,0 +1,29 @@
+{
+    "Exponential Mechanism": {
+      "description": "The Exponential mechanism selects outputs with probabilities proportional to their utility while ensuring differential privacy.",
+      "use_case": "Used in settings where a set of possible discrete outputs is available, primarily for categorical data.",
+      "inputs": {
+        "file": {
+          "description": "The input CSV file containing the tabular data to be anonymized.",
+          "type": "String"
+        },
+        "column_to_be_anonymized": {
+          "description": "The name of the column with categorical data that requires anonymization.",
+          "type": "String"
+        },
+        "direct_identifier_columns": {
+          "description": "A list of columns that serve as direct identifiers.",
+          "type": "Array of Strings"
+        },
+        "sensitivity": {
+          "description": "The sensitivity of the query, representing the maximum change in the output caused by the inclusion or exclusion of a single record.",
+          "type": "Float"
+        },
+        "epsilon": {
+          "description": "Privacy budget that controls the level of noise added.",
+          "type": "Float"
+        }
+      }
+    }
+  }
+  

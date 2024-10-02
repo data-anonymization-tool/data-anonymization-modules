@@ -10,6 +10,10 @@ TEMP_DIR = "temp_ctgan"
 if not os.path.exists(TEMP_DIR):
     os.makedirs(TEMP_DIR)
 
+@app.route('/ct-gan/metadata', methods=['GET'])
+def get_metadata():
+    return send_file('ctgan.json', as_attachment=False)
+
 # Route for uploading the CSV file and generating synthetic data
 @app.route("/ct-gan", methods=["POST"])
 def data_synthesis_ctgan():

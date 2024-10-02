@@ -1,0 +1,58 @@
+{
+  "Differentially Private Queries using Laplace": {
+    "description": "Executes queries using the Laplace mechanism, ensuring privacy by adding noise to the results.",
+    "use_case": "Useful in scenarios where continuous outcomes are needed while maintaining differential privacy.",
+    "inputs": {
+      "Column to be Anonymized": {
+        "description": "The column in the dataset that needs to be anonymized.",
+        "type": "String"
+      },
+      "Condition Value": {
+        "description": "The value based on which the anonymization condition is applied (for queries like count).",
+        "type": "Float"
+      },
+      "Epsilon": {
+        "description": "Privacy budget controlling the level of noise added to the results.",
+        "type": "Float"
+      },
+      "Query": {
+        "description": "The query to be executed on the data.",
+        "type": "Dropdown",
+        "options": [
+          {
+            "value": "Count",
+            "explanation": "Counts the number of occurrences of a specified condition within the data."
+          },
+          {
+            "value": "Sum",
+            "explanation": "Calculates the sum of the values in the specified column, adding privacy-preserving noise."
+          },
+          {
+            "value": "Mean",
+            "explanation": "Computes the average of the values in the specified column, while ensuring differential privacy."
+          },
+          {
+            "value": "Median",
+            "explanation": "Determines the median of the values in the specified column, with added noise for privacy."
+          },
+          {
+            "value": "Mode",
+            "explanation": "Finds the most frequently occurring value in the specified column, with privacy considerations."
+          },
+          {
+            "value": "Variance",
+            "explanation": "Calculates the variance of the values in the specified column, while maintaining privacy."
+          },
+          {
+            "value": "Standard Deviation",
+            "explanation": "Computes the standard deviation of the values in the specified column, preserving privacy."
+          },
+          {
+            "value": "All Queries",
+            "explanation": "Executes all the available queries and returns the results collectively."
+          }
+        ]
+      }
+    }
+  }
+}

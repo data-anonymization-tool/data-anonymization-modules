@@ -1,0 +1,17 @@
+{
+    "k-anonymity": {
+      "description": "K-Anonymity ensures that each individual cannot be distinguished from at least k-1 individuals within the dataset.",
+      "use_case": "It is used to prevent re-identification by ensuring that each record is indistinguishable from at least k others.",
+      "inputs": {
+        "Quasi-Identifiers": {
+          "description": "Columns used to create equivalence classes.",
+          "type": "List of column names"
+        },
+        "K": {
+          "description": "The minimum number of individuals within each equivalence class.",
+          "type": "Integer"
+        }
+      }
+    }
+  }
+  

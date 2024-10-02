@@ -1,0 +1,29 @@
+{
+    "Laplace Mechanism": {
+      "description": "The Laplace mechanism adds noise drawn from a Laplace distribution to ensure differential privacy.",
+      "use_case": "Used to provide privacy guarantees when querying sensitive datasets, primarily for numerical data.",
+      "inputs": {
+        "file": {
+          "description": "The input CSV file containing the tabular data to be anonymized.",
+          "type": "String"
+        },
+        "column_to_be_anonymized": {
+          "description": "The name of the column with numerical data that requires anonymization.",
+          "type": "String"
+        },
+        "direct_identifier_columns": {
+          "description": "A list of columns that serve as direct identifiers.",
+          "type": "Array of Strings"
+        },
+        "sensitivity": {
+          "description": "The sensitivity of the query, representing the maximum change in the output caused by the inclusion or exclusion of a single record.",
+          "type": "Float"
+        },
+        "epsilon": {
+          "description": "Privacy budget that controls the level of noise added.",
+          "type": "Float"
+        }
+      }
+    }
+  }
+  

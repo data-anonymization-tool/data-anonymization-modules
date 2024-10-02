@@ -5,12 +5,24 @@ FROM python:3.9
 WORKDIR /app
 
 # Copy the requirements file into the container
-COPY requirements.txt .
+# COPY requirements.txt .
+
+# Copy the current directory contents into the container at /app
+COPY . /app
 
 # Install the Python dependencies
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy the Python script into the container
-COPY dp-queries-ep.py .
+# COPY dp-queries-ep.py .
 
-CMD ["flask","run"]
+# CMD ["flask","run"]
+
+# Expose the port your Flask app will run on
+EXPOSE 5010
+
+# Define environment variable for Flask
+ENV FLASK_APP=dp-queries-ep.py
+
+# Command to run the Flask application
+CMD ["flask", "run", "--host=0.0.0.0", "--port=5010"]

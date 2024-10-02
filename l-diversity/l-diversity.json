@@ -1,0 +1,21 @@
+{
+    "l-diversity": {
+      "description": "L-Diversity extends k-anonymity by ensuring that sensitive attributes have at least l well-represented values within each equivalence class.",
+      "use_case": "Used to prevent homogeneity attacks by ensuring diversity within equivalence classes.",
+      "inputs": {
+        "Quasi-Identifiers": {
+          "description": "Columns used to create equivalence classes.",
+          "type": "List of column names"
+        },
+        "Sensitive Attribute": {
+          "description": "The attribute that needs to be diversified.",
+          "type": "Column name"
+        },
+        "L": {
+          "description": "The minimum number of diverse sensitive values within each equivalence class.",
+          "type": "Integer"
+        }
+      }
+    }
+  }
+  

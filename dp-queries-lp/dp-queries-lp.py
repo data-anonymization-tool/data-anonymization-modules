@@ -1,6 +1,6 @@
 import pandas as pd
 from diffprivlib.mechanisms import Laplace
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, send_file
 from flask_cors import CORS
 
 app = Flask(__name__)
@@ -95,6 +95,10 @@ def std_dev_query(df, column, epsilon):
     _, noisy_variance = variance_query(df, column, epsilon)
     noisy_std_dev = noisy_variance ** 0.5
     return noisy_std_dev
+
+@app.route('/dp-queries-lp/metadata', methods=['GET'])
+def get_metadata():
+    return send_file('dp-queries-lp.json', as_attachment=False)
 
 @app.route('/dp-queries-lp', methods=['POST'])
 def all():

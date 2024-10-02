@@ -2,7 +2,7 @@ from flask import Flask, request, jsonify, send_file
 import pandas as pd
 from werkzeug.utils import secure_filename
 import os
-import uuid
+from datetime import datetime
 from flask_cors import CORS
 
 app = Flask(__name__)
@@ -28,6 +28,10 @@ def laplace_mechanism(value, sensitivity, epsilon):
 def apply_laplace_mechanism(df, column, sensitivity, epsilon):
     df[column] = df[column].apply(lambda x: laplace_mechanism(x, sensitivity, epsilon))
     return df
+
+@app.route('/dp-laplace/metadata', methods=['GET'])
+def get_metadata():
+    return send_file('dp-laplace.json', as_attachment=False)
 
 @app.route('/dp-laplace', methods=['POST'])
 def apply_laplace():
@@ -70,12 +74,14 @@ def apply_laplace():
 
         # Apply Laplace mechanism to the specified column
         if not pd.api.types.is_numeric_dtype(df[column]):
-            return jsonify({"error": f"Column '{column}' is not numerical. Please use the appropriate mechanism for categorical data."}), 400
+            return jsonify({"error": f"Column '{column}' is not numerical. Please use exponential mechanism for categorical data."}), 400
 
         df = apply_laplace_mechanism(df, column, sensitivity, epsilon)
 
         # Save the anonymized dataset to a file
-        anonymized_filename = f"anonymized_{uuid.uuid4().hex}_{filename}"
+         # Generate timestamp for the filename
+        timestamp = datetime.now().strftime("%Y%m%d%H%M%S")
+        anonymized_filename = f"anonymized_{timestamp}_{filename}"
         anonymized_filepath = os.path.join(app.config['ANONYMIZED_FOLDER'], anonymized_filename)
         df.to_csv(anonymized_filepath, index=False) if file_path.endswith('.csv') else df.to_excel(anonymized_filepath, index=False)
 

@@ -1,0 +1,21 @@
+{
+    "TVAE Synthesis": {
+      "description": "Generates synthetic data using the TVAE model, which is a variational autoencoder adapted for tabular data.",
+      "use_case": "Used to generate synthetic data with complex relationships and distributions.",
+      "inputs": {
+        "Epochs": {
+          "description": "Number of training epochs for the TVAE model.",
+          "type": "Integer"
+        },
+        "Batch Size": {
+          "description": "Number of samples per training batch.",
+          "type": "Integer"
+        },
+        "Learning Rate": {
+          "description": "Learning rate for the model.",
+          "type": "Float"
+        }
+      }
+    }
+  }
+  

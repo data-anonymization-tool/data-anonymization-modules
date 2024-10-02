@@ -1,3 +1,5 @@
 diffprivlib
 numpy
 pandas
+Flask-Cors
+openpyxl
