@@ -1,21 +1,16 @@
 {
     "CTGAN Synthesis": {
-      "description": "Generates synthetic data using the CTGAN model, which is a generative adversarial network tailored for tabular data.",
-      "use_case": "Used for generating realistic synthetic tabular data while preserving the relationships in the original data.",
-      "inputs": {
-        "Epochs": {
-          "description": "Number of training epochs for the CTGAN model.",
-          "type": "Integer"
-        },
-        "Batch Size": {
-          "description": "Number of samples per training batch.",
-          "type": "Integer"
-        },
-        "Generator Learning Rate": {
-          "description": "Learning rate for the generator network.",
-          "type": "Float"
-        }
+    "conceptual_Explanation": "",
+    "technical_Explanation": "",
+    "inputs": {
+      "File": {
+        "description": "The input containing the tabular data to be anonymized.",
+        "type": "CSV file"
       }
-    }
+    }, 
+    "application_Platform": "",
+    "deployable_Module": "",
+    "incremental_Updates": ""
   }
+}
   

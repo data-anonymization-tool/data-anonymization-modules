@@ -1,33 +1,35 @@
 {
-    "Gaussian Mechanism": {
-      "description": "The Gaussian mechanism adds noise drawn from a Gaussian distribution to ensure differential privacy.",
-      "use_case": "Used when the Laplace mechanism is not appropriate, especially in high-sensitivity queries,primarily for numerical data.",
-      "inputs": {
-        "file": {
-          "description": "The input CSV file containing the tabular data to be anonymized.",
-          "type": "String"
-        },
-        "column_to_be_anonymized": {
-          "description": "The name of the column with numerical data that requires anonymization.",
-          "type": "String"
-        },
-        "direct_identifier_columns": {
-          "description": "A list of columns that serve as direct identifiers.",
-          "type": "Array of Strings"
-        },
-        "sensitivity": {
-          "description": "The sensitivity of the query, representing the maximum change in the output caused by the inclusion or exclusion of a single record.",
-          "type": "Float"
-        },
-        "epsilon": {
-          "description": "Privacy budget that controls the level of noise added.",
-          "type": "Float"
-        },
-        "delta": {
-          "description": "Additional parameter that defines the probability of the privacy guarantee failing.",
-          "type": "Float"
-        }
+  "Gaussian Mechanism": {
+    "conceptual_Explanation": "The Gaussian mechanism enables the addition of noise from a Gaussian distribution to maintain differential privacy. This approach is particularly useful for ensuring privacy when dealing with high-sensitivity numerical queries, allowing analysts to extract insights without compromising individual privacy.",
+    "technical_Explanation": "The Gaussian mechanism operates by adding noise sampled from a Gaussian distribution, controlled by the parameters ε (epsilon) and δ (delta). The ε parameter determines the strength of the privacy guarantee, while δ provides an additional layer of security by defining the probability that the privacy mechanism fails. This approach is ideal when dealing with high-sensitivity data, as it allows for a more nuanced trade-off between privacy and accuracy compared to other mechanisms.",
+    "inputs": {
+      "File": {
+        "description": "The input containing the tabular data to be anonymized.",
+        "type": "CSV file"
+      },
+      "Column to be anonymized": {
+        "description": "The name of the column with numerical data that requires anonymization.",
+        "type": "String"
+      },
+      "Direct Identifier Columns": {
+        "description": "A list of columns that serve as direct identifiers.",
+        "type": "Array of Strings"
+      },
+      "Sensitivity": {
+        "description": "The sensitivity of the query, representing the maximum change in the output caused by the inclusion or exclusion of a single record.",
+        "type": "Float"
+      },
+      "Epsilon": {
+        "description": "Privacy budget that controls the level of noise added.",
+        "type": "Float"
+      },
+      "Delta": {
+        "description": "Additional parameter that defines the probability of the privacy guarantee failing.",
+        "type": "Float"
       }
-    }
+    },
+    "application_Platform": "The Gaussian mechanism can be implemented in various data analysis platforms, such as Python, using libraries like NumPy and SciPy to effectively handle high-sensitivity data while ensuring individual privacy.",
+    "deployable_Module": "The implementation can be packaged into a deployable module that offers a user-friendly interface for analysts to execute differentially private queries. This module can streamline the process of adding noise to outputs based on the Gaussian mechanism and can easily integrate into existing data workflows.",
+    "incremental_Updates": "The system supports incremental updates, allowing the analysis of dynamic datasets while maintaining differential privacy. As new records are added, the Gaussian mechanism adjusts the noise parameters accordingly to preserve privacy guarantees."
   }
-  
+}

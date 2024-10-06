@@ -1,8 +1,12 @@
 {
   "Differentially Private Queries using Exponential": {
-    "description": "Executes queries using the exponential mechanism, ensuring privacy by selecting outputs probabilistically.",
-    "use_case": "Useful in settings where discrete outcomes are preferred while maintaining privacy.",
+    "conceptual_Explanation": "Differentially Private Queries using the Exponential mechanism allow for the execution of various analysis queries on categorical datasets while ensuring individual privacy. By probabilistically selecting outputs, this approach maintains data utility without revealing sensitive information.",
+    "technical_Explanation": "The Exponential mechanism selects outputs based on their utility scores while adding randomness to ensure privacy. This mechanism is controlled by the privacy parameter, ε (epsilon), and is particularly useful for categorical data. It computes the probabilities of selecting various outputs and adds noise to maintain differential privacy.",
     "inputs": {
+      "File": {
+        "description": "The input containing the tabular data to be anonymized.",
+        "type": "CSV file"
+      },
       "Column to be Anonymized": {
         "description": "The categorical column in the dataset that is to be anonymized.",
         "type": "String"
@@ -49,6 +53,9 @@
           }
         ]
       }
-    }
+    },
+    "application_Platform": "The Exponential mechanism for differentially private queries can be implemented in various data analysis platforms, such as Python scripts utilizing libraries like NumPy and Pandas, facilitating efficient processing of categorical datasets while preserving individual privacy.",
+    "deployable_Module": "The implementation can be packaged into a deployable module that offers a user-friendly interface for analysts to execute differentially private queries. This module can include predefined queries and automatically manage the noise addition for each result. The deployable module can be easily integrated into existing workflows and customized to accommodate specific data structures and types.",
+    "incremental_Updates": "The system supports incremental updates, enabling analysis of dynamic or streaming datasets. This ensures that as new records are added, the queries maintain differential privacy, adjusting the noise parameters accordingly to protect privacy."
   }
 }

@@ -1,58 +1,65 @@
 {
   "Differentially Private Queries using Laplace": {
-    "description": "Executes queries using the Laplace mechanism, ensuring privacy by adding noise to the results.",
-    "use_case": "Useful in scenarios where continuous outcomes are needed while maintaining differential privacy.",
+    "conceptual_Explanation": "Differentially Private Queries using the Laplace mechanism enable the execution of various data analysis queries on sensitive datasets while preserving the privacy of individuals. This is achieved by adding noise to the results derived from queries, ensuring that the output remains informative but not revealing of individual data points.",
+    "technical_Explanation": "The Laplace mechanism introduces noise generated from the Laplace distribution to the results of specified queries. This noise is determined by the privacy parameter, ε (epsilon), and the sensitivity of the query. In the implementation, each query is processed to evaluate its output, followed by the addition of Laplace noise. This ensures that the output maintains differential privacy, meaning the inclusion or exclusion of any single individual's data has a negligible impact on the output of the query.",
     "inputs": {
+      "File": {
+        "description": "The input containing the tabular data to be anonymized.",
+        "type": "CSV file"
+      },
       "Column to be Anonymized": {
-        "description": "The column in the dataset that needs to be anonymized.",
+        "description": "The column in the dataset that needs to be anonymized, which could contain sensitive information.",
         "type": "String"
       },
       "Condition Value": {
-        "description": "The value based on which the anonymization condition is applied (for queries like count).",
+        "description": "The value used in conditions for queries such as count or aggregation.",
         "type": "Float"
       },
       "Epsilon": {
-        "description": "Privacy budget controlling the level of noise added to the results.",
+        "description": "The privacy budget that controls the scale of noise added to query results, influencing privacy vs. accuracy trade-off.",
         "type": "Float"
       },
       "Query": {
-        "description": "The query to be executed on the data.",
+        "description": "The query to be executed on the data, allowing selection of different analysis types.",
         "type": "Dropdown",
         "options": [
           {
             "value": "Count",
-            "explanation": "Counts the number of occurrences of a specified condition within the data."
+            "explanation": "Counts occurrences of specified conditions, providing an aggregate count while preserving privacy."
           },
           {
             "value": "Sum",
-            "explanation": "Calculates the sum of the values in the specified column, adding privacy-preserving noise."
+            "explanation": "Calculates the total of a specified column's values, incorporating Laplace noise to maintain differential privacy."
           },
           {
             "value": "Mean",
-            "explanation": "Computes the average of the values in the specified column, while ensuring differential privacy."
+            "explanation": "Determines the average value of a column while ensuring that individual entries remain private."
           },
           {
             "value": "Median",
-            "explanation": "Determines the median of the values in the specified column, with added noise for privacy."
+            "explanation": "Calculates the median of the specified column values, protecting the privacy of individual data points."
           },
           {
             "value": "Mode",
-            "explanation": "Finds the most frequently occurring value in the specified column, with privacy considerations."
+            "explanation": "Identifies the most frequent value within the column, ensuring privacy through added noise."
           },
           {
             "value": "Variance",
-            "explanation": "Calculates the variance of the values in the specified column, while maintaining privacy."
+            "explanation": "Computes the variance of values in a column, incorporating noise for privacy protection."
           },
           {
             "value": "Standard Deviation",
-            "explanation": "Computes the standard deviation of the values in the specified column, preserving privacy."
+            "explanation": "Calculates the standard deviation while preserving privacy through the addition of Laplace noise."
           },
           {
             "value": "All Queries",
-            "explanation": "Executes all the available queries and returns the results collectively."
+            "explanation": "Executes all specified queries collectively, returning aggregated results with added noise for privacy."
           }
         ]
       }
-    }
+    }, 
+    "application_Platform": "The Laplace mechanism for differentially private queries can be implemented in various data analysis platforms, such as Python scripts leveraging libraries like NumPy and Pandas, facilitating the processing of large datasets while ensuring privacy.",
+    "deployable_Module": "The implementation can be packaged into a deployable module that provides a user-friendly interface for analysts to execute differentially private queries. This module can include predefined queries and automatically handle the noise addition for each result.The deployable module can be easily integrated into existing workflows and customized to cater to specific data types and structures.",
+    "incremental_Updates": "The system supports incremental updates, allowing the analysis of streaming or dynamically changing datasets. This functionality ensures that as new records are added, the queries remain differentially private, adapting the noise parameters accordingly to preserve privacy."
   }
 }

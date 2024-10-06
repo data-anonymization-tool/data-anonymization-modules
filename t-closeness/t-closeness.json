@@ -1,20 +1,15 @@
 {
     "t-closeness": {
-      "description": "T-Closeness extends l-diversity by ensuring that the distribution of a sensitive attribute in any equivalence class is within t distance of its distribution in the overall dataset.",
-      "use_case": "Used to mitigate attribute disclosure by maintaining the distribution of sensitive attributes within equivalence classes.",
+      "conceptual_Explanation": "",
+      "technical_Explanation": "",
       "inputs": {
-        "Quasi-Identifiers": {
-          "description": "Columns used to create equivalence classes.",
-          "type": "List of column names"
-        },
-        "Sensitive Attribute": {
-          "description": "The attribute that needs to maintain t-closeness.",
-          "type": "Column name"
-        },
-        "T": {
-          "description": "The maximum allowed distance between the sensitive attribute distribution in an equivalence class and the overall dataset.",
-          "type": "Float"
+        "File": {
+          "description": "The input containing the tabular data to be anonymized.",
+          "type": "CSV file"
         }
-      }
+      }, 
+      "application_Platform": "",
+      "deployable_Module": "",
+      "incremental_Updates": ""
     }
   }

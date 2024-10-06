@@ -1,29 +1,31 @@
 {
-    "Exponential Mechanism": {
-      "description": "The Exponential mechanism selects outputs with probabilities proportional to their utility while ensuring differential privacy.",
-      "use_case": "Used in settings where a set of possible discrete outputs is available, primarily for categorical data.",
-      "inputs": {
-        "file": {
-          "description": "The input CSV file containing the tabular data to be anonymized.",
-          "type": "String"
-        },
-        "column_to_be_anonymized": {
-          "description": "The name of the column with categorical data that requires anonymization.",
-          "type": "String"
-        },
-        "direct_identifier_columns": {
-          "description": "A list of columns that serve as direct identifiers.",
-          "type": "Array of Strings"
-        },
-        "sensitivity": {
-          "description": "The sensitivity of the query, representing the maximum change in the output caused by the inclusion or exclusion of a single record.",
-          "type": "Float"
-        },
-        "epsilon": {
-          "description": "Privacy budget that controls the level of noise added.",
-          "type": "Float"
-        }
+  "Exponential Mechanism": {
+    "conceptual_Explanation": "The Exponential mechanism allows for the selection of outputs based on their utility while ensuring differential privacy. It does this by probabilistically choosing outputs, making it suitable for categorical data analysis where specific outcomes are desired without revealing individual data entries.",
+    "technical_Explanation": "The Exponential mechanism operates by assigning probabilities to each possible output based on its utility score. The noise added ensures that the selected output does not compromise the privacy of any individual's data. The privacy parameter, ε (epsilon), controls the randomness in the selection process, balancing privacy with the utility of the output.",
+    "inputs": {
+      "File": {
+        "description": "The input containing the tabular data to be anonymized.",
+        "type": "CSV file"
+      },
+      "Column to be anonymized": {
+        "description": "The name of the column with categorical data that requires anonymization.",
+        "type": "String"
+      },
+      "Direct Identifier Columns": {
+        "description": "A list of columns that serve as direct identifiers.",
+        "type": "Array of Strings"
+      },
+      "Sensitivity": {
+        "description": "The sensitivity of the query, representing the maximum change in the output caused by the inclusion or exclusion of a single record.",
+        "type": "Float"
+      },
+      "Epsilon": {
+        "description": "Privacy budget that controls the level of noise added.",
+        "type": "Float"
       }
-    }
+    },
+    "application_Platform": "The Exponential mechanism can be implemented in various data analysis platforms, such as Python, using libraries like NumPy and Pandas to process categorical datasets effectively while ensuring individual privacy.",
+    "deployable_Module": "The implementation can be packaged into a deployable module that provides a user-friendly interface for analysts to execute differentially private queries. This module can automate the selection process while managing the privacy parameters and can be easily integrated into existing workflows.",
+    "incremental_Updates": "The system supports incremental updates, allowing it to handle dynamic or streaming datasets. As new records are added, the Exponential mechanism ensures that privacy is maintained by adapting the probabilities and noise parameters accordingly."
   }
-  
+}

@@ -1,16 +1,15 @@
 {
     "Gaussian Copula": {
-      "description": "Generates synthetic data by modeling the data distribution with a Gaussian copula.",
-      "use_case": "Used for synthetic data generation with continuous features.",
+      "conceptual_Explanation": "",
+      "technical_Explanation": "",
       "inputs": {
-        "Distribution Type": {
-          "description": "Type of copula distribution used for data generation.",
-          "type": "String"
-        },
-        "Random State": {
-          "description": "Seed for random number generation to ensure reproducibility.",
-          "type": "Integer"
+        "File": {
+          "description": "The input containing the tabular data to be anonymized.",
+          "type": "CSV file"
         }
-      }
+      }, 
+      "application_Platform": "",
+      "deployable_Module": "",
+      "incremental_Updates": ""
     }
   }
