@@ -63,42 +63,42 @@ services:
       - ./t-closeness:/app
     networks:
       - data-anonymization-tool-network
-  
+
   gaussian-copula:
     image: ghcr.io/data-anonymization-tool/gaussian-copula:latest
     ports:
       - "5003:5003"
     environment:
       - FLASK_ENV=development
-      - FLASK_APP=copula.py
+      - FLASK_APP=gaussian-copula.py
       - FLASK_RUN_HOST=0.0.0.0
       - FLASK_RUN_PORT=5003
     volumes:
       - ./gaussian-copula:/app
     networks:
       - data-anonymization-tool-network
-  
+
   ctgan-synthesis:
     image: ghcr.io/data-anonymization-tool/ctgan-synthesis:latest
     ports:
       - "5004:5004"
     environment:
       - FLASK_ENV=development
-      - FLASK_APP=ctgan.py
+      - FLASK_APP=ctgan-synthesis.py
       - FLASK_RUN_HOST=0.0.0.0
       - FLASK_RUN_PORT=5004
     volumes:
       - ./ctgan-synthesis:/app
     networks:
       - data-anonymization-tool-network
-  
+
   tvae-synthesis:
     image: ghcr.io/data-anonymization-tool/tvae-synthesis:latest
     ports:
       - "5005:5005"
     environment:
       - FLASK_ENV=development
-      - FLASK_APP=tvae.py
+      - FLASK_APP=tvae-synthesis.py
       - FLASK_RUN_HOST=0.0.0.0
       - FLASK_RUN_PORT=5005
     volumes:
@@ -181,12 +181,12 @@ networks:
     driver: bridge
     ipam:
       config:
-        - subnet: 172.30.0.0/16  # Changed subnet here
+        - subnet: 172.30.0.0/16 # Changed subnet here
           gateway: 172.30.0.1
 
   data-anonymization-tool-network:
     driver: bridge
     ipam:
       config:
-        - subnet: 172.32.0.0/16  # Changed subnet here to avoid conflicts
+        - subnet: 172.32.0.0/16 # Changed subnet here to avoid conflicts
           gateway: 172.32.0.1

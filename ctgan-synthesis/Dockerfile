@@ -11,7 +11,7 @@ COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy the rest of the application code into the container
-COPY ctgan.py .
+COPY ctgan-synthesis.py .
 # # Expose port 5001 for CTGAN API
 # EXPOSE 5001
 
