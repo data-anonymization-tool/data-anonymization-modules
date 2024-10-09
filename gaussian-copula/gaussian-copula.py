@@ -98,6 +98,8 @@ def data_synthesis_gaussian():
         return send_file(synthetic_file_path, as_attachment=True)
     except Exception as e:
         return jsonify({"error": str(e)}), 500
+        
+        # Adding a comment
 
 # Run the Flask app
 if __name__ == "__main__":
