@@ -1,0 +1,23 @@
+{
+    "stepping": {
+        "conceptual_Explanation": "",
+        "technical_Explanation": "",
+        "inputs": {
+            "File": {
+                "description": "",
+                "type": "CSV file"
+            },
+            "Column to be anonymized": {
+                "description": "The name of the column with numerical data that requires anonymization.",
+                "type": "String"
+            },
+            "Direct identifier columns": {
+                "description": "A list of columns that serve as direct identifiers.",
+                "type": "Array of Strings"
+            }
+        },
+        "application_Platform": "",
+        "deployable_Module": "",
+        "incremental_Updates": ""
+    }
+}
