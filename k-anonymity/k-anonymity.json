@@ -1,16 +1,27 @@
 {
-    "k-anonymity": {
-      "conceptual_Explanation": "",
-      "technical_Explanation": "",
-      "inputs": {
-        "File": {
-          "description": "The input containing the tabular data to be anonymized.",
-          "type": "CSV file"
-        }
-      }, 
-      "application_Platform": "",
-      "deployable_Module": "",
-      "incremental_Updates": ""
-    }
+  "k-anonymity": {
+    "conceptual_Explanation": "K-anonymity is a privacy model used to prevent re-identification of individuals in datasets. It ensures that each record in the dataset is indistinguishable from at least k-1 other records based on quasi-identifiers, making it difficult to isolate information about any single individual.",
+    "technical_Explanation": "K-anonymity is achieved by generalizing or suppressing quasi-identifiers (e.g., age, gender, ZIP code) such that any individual cannot be uniquely identified by their combination of quasi-identifier attributes. This guarantees that each group of individuals shares the same quasi-identifier values, offering a degree of anonymity.",
+    "inputs": {
+      "File": {
+        "description": "The input containing the tabular data to be anonymized.",
+        "type": "CSV file"
+      },
+      "Column to be anonymized": {
+        "description": "The name of the column with numerical data that requires anonymization.",
+        "type": "String"
+      },
+      "Direct identifier columns": {
+        "description": "A list of columns that serve as direct identifiers.",
+        "type": "Array of Strings"
+      },
+      "k":{
+        "description": "The minimum number of records in each group (equivalence class) sharing the same quasi-identifiers to prevent re-identification.",
+        "type": "Integer"
+      }
+    }, 
+    "application_Platform": "K-anonymity is widely used in data privacy applications, particularly when anonymizing datasets for release in healthcare, research, or public data-sharing.",
+    "deployable_Module": "Yes, it can be deployed in anonymization pipelines where data must be shared while ensuring privacy.",
+    "incremental_Updates": "Incremental updates may not be easily supported, as modifying the dataset could compromise the k-anonymity of existing records."
   }
-  
+}

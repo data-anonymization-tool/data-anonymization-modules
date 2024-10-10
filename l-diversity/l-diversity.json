@@ -1,16 +1,31 @@
 {
-    "l-diversity": {
-      "conceptual_Explanation": "",
-      "technical_Explanation": "",
-      "inputs": {
-        "File": {
-          "description": "The input containing the tabular data to be anonymized.",
-          "type": "CSV file"
-        }
-      }, 
-      "application_Platform": "",
-      "deployable_Module": "",
-      "incremental_Updates": ""
-    }
+  "l-diversity": {
+    "conceptual_Explanation": "L-diversity is a privacy-enhancing technique that extends k-anonymity by ensuring that sensitive information within each equivalence class is well-represented by at least 'l' distinct values. This helps protect against homogeneity and background knowledge attacks, where sensitive values could still be inferred even with k-anonymity in place.",
+    "technical_Explanation": "L-diversity works by modifying the dataset to ensure that, within each group of records that share a common quasi-identifier, there are at least 'l' distinct values for the sensitive attribute. This helps prevent adversaries from linking sensitive information to individuals, by ensuring diversity in the sensitive data for each anonymized group.",
+    "inputs": {
+      "File": {
+        "description": "The input containing the tabular data to be anonymized.",
+        "type": "CSV file"
+      },
+      "Column to be anonymized": {
+        "description": "The name of the column with numerical data that requires anonymization.",
+        "type": "String"
+      },
+      "Direct identifier columns": {
+        "description": "A list of columns that serve as direct identifiers.",
+        "type": "Array of Strings"
+      },
+      "l":{
+        "description": "The minimum number of distinct sensitive attribute values within each group to protect against homogeneity and background knowledge attacks.",
+        "type": "Integer"
+      },
+      "k":{
+        "description": "The minimum number of records in each group (equivalence class) sharing the same quasi-identifiers to prevent re-identification.",
+        "type": "Integer"
+      }
+    }, 
+    "application_Platform": "This technique can be used in data privacy platforms for research, healthcare, and financial data, where sensitive information must be anonymized before sharing.",
+    "deployable_Module": "Yes, it can be deployed in privacy-preserving data processing pipelines.",
+    "incremental_Updates": "Typically does not support incremental updates, as the entire dataset is often needed to ensure proper l-diversity."
   }
-  
+}

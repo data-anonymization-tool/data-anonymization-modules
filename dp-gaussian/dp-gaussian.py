@@ -39,7 +39,7 @@ def apply_gaussian_mechanism(df, column, sensitivity, epsilon, delta):
 def get_metadata():
     return send_file('dp-gaussian.json', as_attachment=False)
 
-@app.route('/dp-gaussian', methods=['POST'])
+@app.route('/dp-gaussian/', methods=['POST'])
 def apply_gaussian():
     if 'file' not in request.files:
         return jsonify({"error": "No file part"}), 400
@@ -54,11 +54,11 @@ def apply_gaussian():
         file.save(file_path)
 
     # Get the parameters from the request
-        column = request.form.get('column')
-        direct_identifiers = request.form.get('direct_identifiers', '')
-        sensitivity = float(request.form.get('sensitivity', 1))
-        epsilon = float(request.form.get('epsilon', 1.0))
-        delta = float(request.form.get('delta', 1e-5))
+        column = request.form.get('Column to be anonymized')
+        direct_identifiers = request.form.get('Direct Identifier Columns', '')
+        sensitivity = float(request.form.get('Sensitivity', 1))
+        epsilon = float(request.form.get('Epsilon', 1.0))
+        delta = float(request.form.get('Delta', 1e-5))
 
         # Load the dataset
         if file_path.endswith('.csv'):

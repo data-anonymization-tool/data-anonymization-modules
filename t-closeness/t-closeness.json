@@ -1,15 +1,31 @@
 {
-    "t-closeness": {
-      "conceptual_Explanation": "",
-      "technical_Explanation": "",
-      "inputs": {
-        "File": {
-          "description": "The input containing the tabular data to be anonymized.",
-          "type": "CSV file"
-        }
-      }, 
-      "application_Platform": "",
-      "deployable_Module": "",
-      "incremental_Updates": ""
-    }
+  "t-closeness": {
+    "conceptual_Explanation": "T-closeness is a refinement of l-diversity and k-anonymity that addresses the issue of attribute disclosure by ensuring that the distribution of sensitive attributes within each equivalence class is close to the distribution in the overall dataset. This reduces the risk of revealing too much information about a specific individual’s sensitive attributes.",
+    "technical_Explanation": "T-closeness works by ensuring that the difference in distribution of sensitive attributes in any equivalence class and the overall dataset does not exceed a threshold 't'. This threshold controls how closely aligned the distribution of sensitive attributes must be, thereby limiting the amount of information that can be inferred about individuals.",
+    "inputs": {
+      "File": {
+        "description": "The input containing the tabular data to be anonymized.",
+        "type": "CSV file"
+      },
+      "Column to be anonymized": {
+        "description": "The name of the column with numerical data that requires anonymization.",
+        "type": "String"
+      },
+      "Direct identifier columns": {
+        "description": "A list of columns that serve as direct identifiers.",
+        "type": "Array of Strings"
+      },
+      "t":{
+        "description": "The maximum allowable difference between the distribution of sensitive attributes in a group and the overall dataset to protect against attribute disclosure.",
+        "type": "Float"
+      },
+      "k":{
+        "description": "The minimum number of records in each group (equivalence class) sharing the same quasi-identifiers to prevent re-identification.",
+        "type": "Integer"
+      }
+    }, 
+    "application_Platform": "T-closeness is suitable for scenarios involving sensitive information in sectors like healthcare, where precise control over data exposure is necessary.",
+    "deployable_Module": "Yes, t-closeness can be incorporated into privacy-preserving modules for data sharing.",
+    "incremental_Updates": "Incremental updates are not generally supported, as recalculating the distribution would be needed to maintain t-closeness."
   }
+}

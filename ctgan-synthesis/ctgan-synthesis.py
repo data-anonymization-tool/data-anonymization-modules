@@ -2,8 +2,10 @@ from flask import Flask, request, jsonify, send_file
 import pandas as pd
 import os
 import json
+from flask_cors import CORS
 
 app = Flask(__name__)
+CORS(app)
 
 # Ensure the temp directory exists
 TEMP_DIR = "temp_ctgan"
@@ -12,10 +14,10 @@ if not os.path.exists(TEMP_DIR):
 
 @app.route('/ct-gan/metadata', methods=['GET'])
 def get_metadata():
-    return send_file('ctgan.json', as_attachment=False)
+    return send_file('ctgan-synthesis.json', as_attachment=False)
 
 # Route for uploading the CSV file and generating synthetic data
-@app.route("/ct-gan", methods=["POST"])
+@app.route("/ct-gan/", methods=["POST"])
 def data_synthesis_ctgan():
     if "file" not in request.files:
         return jsonify({"error": "No file part in the request"}), 400
@@ -25,13 +27,13 @@ def data_synthesis_ctgan():
     if file.filename == "":
         return jsonify({"error": "No file selected for uploading"}), 400
 
-    columns_to_anonymize = request.form.get("columns_to_anonymize")
+    columns_to_anonymize = request.form.get("Columns to be anonymized")
     if columns_to_anonymize:
         columns_to_anonymize = json.loads(columns_to_anonymize)
     else:
         columns_to_anonymize = []
 
-    identifying_attributes = request.form.get("identifying_attributes")
+    identifying_attributes = request.form.get("Direct Identifier Columns")
     if identifying_attributes:
         identifying_attributes = json.loads(identifying_attributes)
     else:

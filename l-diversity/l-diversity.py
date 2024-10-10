@@ -3,8 +3,10 @@ import pandas as pd
 from werkzeug.utils import secure_filename
 import os
 import uuid
+from flask_cors import CORS
 
 app = Flask(__name__)
+CORS(app)
 
 # Define upload and anonymized file directories
 UPLOAD_FOLDER = './uploads'
@@ -132,7 +134,11 @@ def build_anonymized_dataset(df, partitions, feature_columns, sensitive_column, 
             rows.append(row)
     return pd.DataFrame(rows)
 
-@app.route('/l-diversity', methods=['POST'])
+@app.route('/l-diversity/metadata', methods=['GET'])
+def get_metadata():
+    return send_file('l-diversity.json', as_attachment=False)
+
+@app.route('/l-diversity/', methods=['POST'])
 def anonymize():
     # Check if the file part is in the request
     if 'file' not in request.files:
@@ -152,8 +158,8 @@ def anonymize():
         # Get the parameters from the request
         k = int(request.form.get('k', 3))
         l = int(request.form.get('l', 2))
-        feature_columns = request.form.getlist('feature_columns')
-        sensitive_column = request.form.get('sensitive_column')
+        feature_columns = request.form.getlist('Column to be anonymized')
+        sensitive_column = request.form.get('Direct Identifier Columns')
 
         # Load the dataset
         df = pd.read_csv(file_path)

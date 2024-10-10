@@ -33,7 +33,7 @@ def apply_laplace_mechanism(df, column, sensitivity, epsilon):
 def get_metadata():
     return send_file('dp-laplace.json', as_attachment=False)
 
-@app.route('/dp-laplace', methods=['POST'])
+@app.route('/dp-laplace/', methods=['POST'])
 def apply_laplace():
     if 'file' not in request.files:
         return jsonify({"error": "No file part"}), 400
@@ -48,10 +48,10 @@ def apply_laplace():
         file.save(file_path)
 
         # Get the parameters from the request
-        column = request.form.get('column')
-        direct_identifiers = request.form.get('direct_identifiers', '')
-        sensitivity = float(request.form.get('sensitivity', 1))
-        epsilon = float(request.form.get('epsilon', 1.0))
+        column = request.form.get('Column to be anonymized')
+        direct_identifiers = request.form.get('Direct Identifier Columns', '')
+        sensitivity = float(request.form.get('Sensitivity', 1))
+        epsilon = float(request.form.get('Epsilon', 1.0))
 
         # Load the dataset
         if file_path.endswith('.csv'):

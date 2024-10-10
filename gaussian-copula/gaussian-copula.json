@@ -1,15 +1,23 @@
 {
-    "Gaussian Copula": {
-      "conceptual_Explanation": "",
-      "technical_Explanation": "",
-      "inputs": {
-        "File": {
-          "description": "The input containing the tabular data to be anonymized.",
-          "type": "CSV file"
-        }
-      }, 
-      "application_Platform": "",
-      "deployable_Module": "",
-      "incremental_Updates": ""
-    }
+  "Gaussian Copula": {
+    "conceptual_Explanation": "Gaussian Copula is a statistical model used to synthesize tabular data by learning the dependencies between variables and generating new samples that follow the same relationships. It transforms the data into a Gaussian space, models the dependencies, and then transforms it back to the original space.",
+    "technical_Explanation": "Gaussian Copula works by transforming the input data into a multivariate Gaussian distribution using a copula. It models the correlations between variables, generating new samples that maintain the same relationships, and then transforms the generated data back to the original scale. It is particularly effective when dealing with mixed data types.",
+    "inputs": {
+      "File": {
+        "description": "The input containing the tabular data to be anonymized.",
+        "type": "CSV file"
+      },
+      "Column to be anonymized": {
+        "description": "The name of the column with numerical data that requires anonymization.",
+        "type": "String"
+      },
+      "Direct identifier columns": {
+        "description": "A list of columns that serve as direct identifiers that need to be dropped from the output..",
+        "type": "Array of Strings"
+      }
+    }, 
+    "application_Platform": "Gaussian Copula can be used in data synthesis applications where preserving the relationships between variables is important, such as in finance, research, and healthcare.",
+    "deployable_Module": "Yes, Gaussian Copula can be deployed in synthetic data generation platforms.",
+    "incremental_Updates": "No, incremental updates are not typically supported as the model requires retraining with new data."
   }
+}

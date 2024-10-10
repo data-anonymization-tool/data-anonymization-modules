@@ -1,0 +1,23 @@
+{
+  "CTGAN Synthesis": {
+    "conceptual_Explanation": "CTGAN is a deep learning-based model for generating synthetic tabular data. It uses a conditional GAN (Generative Adversarial Network) to learn the distribution of the real data and generate synthetic samples that preserve the structure and statistical properties of the original dataset.",
+    "technical_Explanation": "CTGAN employs a GAN framework that takes real tabular data as input and generates synthetic data that mimics the distribution of the original data. The model learns to capture dependencies between features, handling both continuous and discrete variables, which makes it particularly useful for complex tabular datasets.",
+    "inputs": {
+      "File": {
+        "description": "The input containing the tabular data to be anonymized.",
+        "type": "CSV file"
+      },
+      "Column to be anonymized": {
+        "description": "The name of the column with numerical data that requires anonymization.",
+        "type": "String"
+      },
+      "Direct identifier columns": {
+        "description": "A list of columns that serve as direct identifiers that need to be dropped from the output.",
+        "type": "Array of Strings"
+      }
+    }, 
+    "application_Platform": "CTGAN can be applied in scenarios requiring synthetic data generation, such as data augmentation, testing, and privacy-preserving data sharing in industries like finance and healthcare.",
+    "deployable_Module": "Yes, CTGAN can be deployed as a module for synthetic data generation pipelines.",
+    "incremental_Updates": "Typically does not support incremental updates, as retraining the model on new data is necessary to incorporate changes."
+  }
+}

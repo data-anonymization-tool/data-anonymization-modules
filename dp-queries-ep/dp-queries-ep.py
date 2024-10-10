@@ -121,11 +121,11 @@ def differential_private_contingency_table(df, column1, column2, epsilon):
 def get_metadata():
     return send_file('dp-queries-ep.json', as_attachment=False)
 
-@app.route('/dp-queries-ep/frequency', methods=['POST'])
+@app.route('/dp-queries-ep/frequency/', methods=['POST'])
 def frequency():
     file = request.files['file']
-    column = request.form.get('column')
-    epsilon = float(request.form.get('epsilon', 1.0))
+    column = request.form.get('Column to be anonymized')
+    epsilon = float(request.form.get('Epsilon', 1.0))
 
     try:
         df = load_file(file)
@@ -146,11 +146,11 @@ def frequency():
     except Exception as e:
         return jsonify({"error": str(e)}), 400
 
-@app.route('/dp-queries-ep/mode', methods=['POST'])
+@app.route('/dp-queries-ep/mode/', methods=['POST'])
 def mode():
     file = request.files['file']
-    column = request.form.get('column')
-    epsilon = float(request.form.get('epsilon', 1.0))
+    column = request.form.get('Column to be anonymized')
+    epsilon = float(request.form.get('Epsilon', 1.0))
 
     try:
         df = load_file(file)
@@ -172,11 +172,11 @@ def mode():
     except Exception as e:
         return jsonify({"error": str(e)}), 400
     
-@app.route('/dp-queries-ep/entropy', methods=['POST'])
+@app.route('/dp-queries-ep/entropy/', methods=['POST'])
 def entropy():
     file = request.files['file']
-    column = request.form.get('column')
-    epsilon = float(request.form.get('epsilon', 1.0))
+    column = request.form.get('Column to be anonymized')
+    epsilon = float(request.form.get('Epsilon', 1.0))
 
     try:
         df = load_file(file)
@@ -197,11 +197,11 @@ def entropy():
     except Exception as e:
         return jsonify({"error": str(e)}), 400
     
-@app.route('/dp-queries-ep/top-k', methods=['POST'])
+@app.route('/dp-queries-ep/top-k/', methods=['POST'])
 def topk():
     file = request.files['file']
-    column = request.form.get('column')
-    epsilon = float(request.form.get('epsilon', 1.0))
+    column = request.form.get('Column to be anonymized')
+    epsilon = float(request.form.get('Epsilon', 1.0))
     k = int(request.form.get('k', 0))
 
     try:
@@ -225,12 +225,12 @@ def topk():
     except Exception as e:
         return jsonify({"error": str(e)}), 400
 
-@app.route('/dp-queries-ep/contingency', methods=['POST'])
+@app.route('/dp-queries-ep/contingency/', methods=['POST'])
 def contingency():
     file = request.files['file']
-    column = request.form.get('column')
-    epsilon = float(request.form.get('epsilon', 1.0))
-    column2 = request.form.get('column2')
+    column = request.form.get('Column to be anonymized')
+    epsilon = float(request.form.get('Epsilon', 1.0))
+    column2 = request.form.get('Column 2')
 
     try:
         df = load_file(file)
@@ -253,13 +253,13 @@ def contingency():
     except Exception as e:
         return jsonify({"error": str(e)}), 400
 
-@app.route('/dp-queries-ep', methods=['POST'])
+@app.route('/dp-queries-ep/', methods=['POST'])
 def all():
     file = request.files['file']
-    column = request.form.get('column')
-    epsilon = float(request.form.get('epsilon', 1.0))
+    column = request.form.get('Column to be anonymized')
+    epsilon = float(request.form.get('Epsilon', 1.0))
     k = int(request.form.get('k', 0))
-    column2 = request.form.get('column2')
+    column2 = request.form.get('Column 2')
 
     try:
         df = load_file(file)

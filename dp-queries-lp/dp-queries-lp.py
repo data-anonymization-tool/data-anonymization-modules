@@ -100,12 +100,12 @@ def std_dev_query(df, column, epsilon):
 def get_metadata():
     return send_file('dp-queries-lp.json', as_attachment=False)
 
-@app.route('/dp-queries-lp', methods=['POST'])
+@app.route('/dp-queries-lp/', methods=['POST'])
 def all():
     file = request.files['file']
-    column = request.form.get('column')
-    condition_value = float(request.form.get('condition_value'))
-    epsilon = float(request.form.get('epsilon'))
+    column = request.form.get('Column to be anonymized')
+    condition_value = float(request.form.get('Condition Value'))
+    epsilon = float(request.form.get('Epsilon'))
 
     try:
         df = load_file(file)
@@ -135,12 +135,12 @@ def all():
     except Exception as e:
         return jsonify({"error": str(e)}), 400
 
-@app.route('/dp-queries-lp/count', methods=['POST'])
+@app.route('/dp-queries-lp/count/', methods=['POST'])
 def count():
     file = request.files['file']
-    column = request.form.get('column')
-    condition_value = float(request.form.get('condition_value'))
-    epsilon = float(request.form.get('epsilon'))
+    column = request.form.get('Column to be anonymized')
+    condition_value = float(request.form.get('Condition Value'))
+    epsilon = float(request.form.get('Epsilon'))
 
     try:
         df = load_file(file)
@@ -153,11 +153,11 @@ def count():
     except Exception as e:
         return jsonify({"error": str(e)}), 400
 
-@app.route('/dp-queries-lp/sum', methods=['POST'])
+@app.route('/dp-queries-lp/sum/', methods=['POST'])
 def sum_():
     file = request.files['file']
-    column = request.form.get('column')
-    epsilon = float(request.form.get('epsilon'))
+    column = request.form.get('Column to be anonymized')
+    epsilon = float(request.form.get('Epsilon'))
 
     try:
         df = load_file(file)
@@ -169,11 +169,11 @@ def sum_():
     except Exception as e:
         return jsonify({"error": str(e)}), 400
 
-@app.route('/dp-queries-lp/mean', methods=['POST'])
+@app.route('/dp-queries-lp/mean/', methods=['POST'])
 def mean():
     file = request.files['file']
-    column = request.form.get('column')
-    epsilon = float(request.form.get('epsilon'))
+    column = request.form.get('Column to be anonymized')
+    epsilon = float(request.form.get('Epsilon'))
 
     try:
         df = load_file(file)
@@ -185,11 +185,11 @@ def mean():
     except Exception as e:
         return jsonify({"error": str(e)}), 400
 
-@app.route('/dp-queries-lp/median', methods=['POST'])
+@app.route('/dp-queries-lp/median/', methods=['POST'])
 def median():
     file = request.files['file']
-    column = request.form.get('column')
-    epsilon = float(request.form.get('epsilon'))
+    column = request.form.get('Column to be anonymized')
+    epsilon = float(request.form.get('Epsilon'))
 
     try:
         df = load_file(file)
@@ -201,11 +201,11 @@ def median():
     except Exception as e:
         return jsonify({"error": str(e)}), 400
 
-@app.route('/dp-queries-lp/mode', methods=['POST'])
+@app.route('/dp-queries-lp/mode/', methods=['POST'])
 def mode():
     file = request.files['file']
-    column = request.form.get('column')
-    epsilon = float(request.form.get('epsilon'))
+    column = request.form.get('Column to be anonymized')
+    epsilon = float(request.form.get('Epsilon'))
 
     try:
         df = load_file(file)
@@ -217,11 +217,11 @@ def mode():
     except Exception as e:
         return jsonify({"error": str(e)}), 400
 
-@app.route('/dp-queries-lp/variance', methods=['POST'])
+@app.route('/dp-queries-lp/variance/', methods=['POST'])
 def variance():
     file = request.files['file']
-    column = request.form.get('column')
-    epsilon = float(request.form.get('epsilon'))
+    column = request.form.get('Column to be anonymized')
+    epsilon = float(request.form.get('Epsilon'))
 
     try:
         df = load_file(file)
@@ -233,11 +233,11 @@ def variance():
     except Exception as e:
         return jsonify({"error": str(e)}), 400
 
-@app.route('/dp-queries-lp/std_dev', methods=['POST'])
+@app.route('/dp-queries-lp/std_dev/', methods=['POST'])
 def std_dev():
     file = request.files['file']
-    column = request.form.get('column')
-    epsilon = float(request.form.get('epsilon'))
+    column = request.form.get('Column to be anonymized')
+    epsilon = float(request.form.get('Epsilon'))
 
     try:
         df = load_file(file)
@@ -249,4 +249,4 @@ def std_dev():
         return jsonify({"error": str(e)}), 400
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(port = 5009, debug=True)

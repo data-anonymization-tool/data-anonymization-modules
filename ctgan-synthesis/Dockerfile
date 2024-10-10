@@ -5,15 +5,25 @@ FROM python:3.9-slim
 WORKDIR /app
 
 # Copy the requirements file into the container
-COPY requirements.txt .
+# COPY requirements.txt .
+
+# Copy the current directory contents into the container at /app
+COPY . /app
 
 # Install the dependencies
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy the rest of the application code into the container
-COPY ctgan-synthesis.py .
-# # Expose port 5001 for CTGAN API
-# EXPOSE 5001
+# COPY ctgan-synthesis.py .
 
 # Run the Flask app
-CMD ["flask", "run"]
+# CMD ["flask", "run"]
+
+# Expose the port your Flask app will run on
+EXPOSE 5004
+
+# Define environment variable for Flask
+ENV FLASK_APP=ctgan-synthesis.py
+
+# Command to run the Flask application
+CMD ["flask", "run", "--host=0.0.0.0", "--port=5004"]

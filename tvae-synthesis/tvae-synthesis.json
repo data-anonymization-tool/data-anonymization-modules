@@ -1,0 +1,23 @@
+{
+  "TVAE Synthesis": {
+    "conceptual_Explanation": "TVAE (Tabular Variational AutoEncoder) is a generative model designed to synthesize tabular data. It learns the latent representation of the input data and uses it to generate new, realistic data points while maintaining the statistical properties of the original data.",
+    "technical_Explanation": "TVAE uses a Variational AutoEncoder (VAE) architecture to learn the distribution of tabular data and generate synthetic data. It captures the relationships between features in the input data and generates new samples that maintain the overall data structure, while offering flexibility for different types of data.",
+    "inputs": {
+      "File": {
+        "description": "The input containing the tabular data to be anonymized.",
+        "type": "CSV file"
+      },
+      "Column to be anonymized": {
+        "description": "The name of the column with numerical data that requires anonymization.",
+        "type": "String"
+      },
+      "Direct identifier columns": {
+        "description": "A list of columns that serve as direct identifiers that need to be dropped from the output.",
+        "type": "Array of Strings"
+      }
+    }, 
+    "application_Platform": "TVAE can be used for synthetic data generation in industries like finance, insurance, and healthcare, especially when preserving the statistical properties of sensitive datasets is crucial.",
+    "deployable_Module": "Yes, TVAE can be deployed in synthetic data generation systems.",
+    "incremental_Updates": "Incremental updates are not supported, as the model would need to be retrained with new data."
+  }
+}
