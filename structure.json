@@ -1,0 +1,40 @@
+{
+    "Grouping Based": {
+        "k-anonymity": [
+            "k-anonymity"
+        ],
+        "l-diversity": [
+            "l-diversity"
+        ],
+        "t-closeness": [
+            "t-closeness"
+        ]
+    },
+    "Differential Privacy": {
+        "Noise Injection Mechanisms": [
+            "Laplace Mechanism",
+            "Exponential Mechanism",
+            "Gaussian Mechanism"
+        ],
+        "Differentially Private Queries": [
+            "Differentially Private Queries using Laplace",
+            "Differentially Private Queries using Exponential"
+        ]
+    },
+    "Data Synthesis": {
+        "CTGAN Synthesis": [
+            "CTGAN Synthesis"
+        ],
+        "Gaussian Copula": [
+            "Gaussian Copula"
+        ],
+        "TVAE Synthesis": [
+            "TVAE Synthesis"
+        ]
+    },
+    "undefined": {
+        "undefined": [
+            "stopping"
+        ]
+    }
+}
