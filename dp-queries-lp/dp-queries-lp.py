@@ -249,4 +249,4 @@ def std_dev():
         return jsonify({"error": str(e)}), 400
 
 if __name__ == '__main__':
-    app.run(port = 5009, debug=True)
+    app.run(port = 5010, debug=True)

@@ -29,13 +29,13 @@ def data_synthesis_ctgan():
 
     columns_to_anonymize = request.form.get("Columns to be anonymized")
     if columns_to_anonymize:
-        columns_to_anonymize = json.loads(columns_to_anonymize)
+        columns_to_anonymize = [col.strip() for col in columns_to_anonymize.split(",")]
     else:
         columns_to_anonymize = []
 
     identifying_attributes = request.form.get("Direct Identifier Columns")
     if identifying_attributes:
-        identifying_attributes = json.loads(identifying_attributes)
+        identifying_attributes = [attr.strip() for attr in identifying_attributes.split(",")]
     else:
         identifying_attributes = []
 
@@ -103,4 +103,4 @@ def data_synthesis_ctgan():
 
 # Run the Flask app
 if __name__ == "__main__":
-    app.run(debug=True, port=5001)
+    app.run(debug=True, port=5005)

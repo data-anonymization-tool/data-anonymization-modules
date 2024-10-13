@@ -17,16 +17,16 @@ RUN pip install --no-cache-dir -r requirements.txt
 # COPY t-closeness.py .
 
 # # Expose the port that the app runs on
-# EXPOSE 5002
+# EXPOSE 5003
 
 # Run the Flask app
 # CMD ["flask", "run"]
 
 # Expose the port your Flask app will run on
-EXPOSE 5002
+EXPOSE 5003
 
 # Define environment variable for Flask
 ENV FLASK_APP=t-closeness.py
 
 # Command to run the Flask application
-CMD ["flask", "run", "--host=0.0.0.0", "--port=5002"]
+CMD ["flask", "run", "--host=0.0.0.0", "--port=5003"]

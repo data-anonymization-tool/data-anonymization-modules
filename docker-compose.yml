@@ -24,13 +24,14 @@ services:
 
   k-anonymity:
     image: ghcr.io/data-anonymization-tool/k-anonymity:latest
+    pull_policy: always
     ports:
-      - "5000:5000"
+      - "5001:5001"
     environment:
       - FLASK_ENV=development
       - FLASK_APP=k-anonymity.py
       - FLASK_RUN_HOST=0.0.0.0
-      - FLASK_RUN_PORT=5000
+      - FLASK_RUN_PORT=5001
     volumes:
       - ./k-anonymity:/app
     networks:
@@ -38,13 +39,14 @@ services:
 
   l-diversity:
     image: ghcr.io/data-anonymization-tool/l-diversity:latest
+    pull_policy: always
     ports:
-      - "5001:5001"
+      - "5002:5002"
     environment:
       - FLASK_ENV=development
       - FLASK_APP=l-diversity.py
       - FLASK_RUN_HOST=0.0.0.0
-      - FLASK_RUN_PORT=5001
+      - FLASK_RUN_PORT=5002
     volumes:
       - ./l-diversity:/app
     networks:
@@ -52,13 +54,14 @@ services:
 
   t-closeness:
     image: ghcr.io/data-anonymization-tool/t-closeness:latest
+    pull_policy: always
     ports:
-      - "5002:5002"
+      - "5003:5003"
     environment:
       - FLASK_ENV=development
       - FLASK_APP=t-closeness.py
       - FLASK_RUN_HOST=0.0.0.0
-      - FLASK_RUN_PORT=5002
+      - FLASK_RUN_PORT=5003
     volumes:
       - ./t-closeness:/app
     networks:
@@ -66,13 +69,14 @@ services:
 
   gaussian-copula:
     image: ghcr.io/data-anonymization-tool/gaussian-copula:latest
+    pull_policy: always
     ports:
-      - "5003:5003"
+      - "5004:5004"
     environment:
       - FLASK_ENV=development
       - FLASK_APP=gaussian-copula.py
       - FLASK_RUN_HOST=0.0.0.0
-      - FLASK_RUN_PORT=5003
+      - FLASK_RUN_PORT=5004
     volumes:
       - ./gaussian-copula:/app
     networks:
@@ -80,13 +84,14 @@ services:
 
   ctgan-synthesis:
     image: ghcr.io/data-anonymization-tool/ctgan-synthesis:latest
+    pull_policy: always
     ports:
-      - "5004:5004"
+      - "5005:5005"
     environment:
       - FLASK_ENV=development
       - FLASK_APP=ctgan-synthesis.py
       - FLASK_RUN_HOST=0.0.0.0
-      - FLASK_RUN_PORT=5004
+      - FLASK_RUN_PORT=5005
     volumes:
       - ./ctgan-synthesis:/app
     networks:
@@ -94,13 +99,14 @@ services:
 
   tvae-synthesis:
     image: ghcr.io/data-anonymization-tool/tvae-synthesis:latest
+    pull_policy: always
     ports:
-      - "5005:5005"
+      - "5006:5006"
     environment:
       - FLASK_ENV=development
       - FLASK_APP=tvae-synthesis.py
       - FLASK_RUN_HOST=0.0.0.0
-      - FLASK_RUN_PORT=5005
+      - FLASK_RUN_PORT=5006
     volumes:
       - ./tvae-synthesis:/app
     networks:
@@ -108,13 +114,14 @@ services:
 
   dp-laplace:
     image: ghcr.io/data-anonymization-tool/dp-laplace:latest
+    pull_policy: always
     ports:
-      - "5006:5006"
+      - "5007:5007"
     environment:
       - FLASK_ENV=development
       - FLASK_APP=dp-laplace.py
       - FLASK_RUN_HOST=0.0.0.0
-      - FLASK_RUN_PORT=5006
+      - FLASK_RUN_PORT=5007
     volumes:
       - ./dp-laplace:/app
     networks:
@@ -122,13 +129,14 @@ services:
 
   dp-exponential:
     image: ghcr.io/data-anonymization-tool/dp-exponential:latest
+    pull_policy: always
     ports:
-      - "5007:5007"
+      - "5008:5008"
     environment:
       - FLASK_ENV=development
       - FLASK_APP=dp-exponential.py
       - FLASK_RUN_HOST=0.0.0.0
-      - FLASK_RUN_PORT=5007
+      - FLASK_RUN_PORT=5008
     volumes:
       - ./dp-exponential:/app
     networks:
@@ -136,13 +144,14 @@ services:
 
   dp-gaussian:
     image: ghcr.io/data-anonymization-tool/dp-gaussian:latest
+    pull_policy: always
     ports:
-      - "5008:5008"
+      - "5009:5009"
     environment:
       - FLASK_ENV=development
       - FLASK_APP=dp-gaussian.py
       - FLASK_RUN_HOST=0.0.0.0
-      - FLASK_RUN_PORT=5008
+      - FLASK_RUN_PORT=5009
     volumes:
       - ./dp-gaussian:/app
     networks:
@@ -150,13 +159,14 @@ services:
 
   dp-queries-lp:
     image: ghcr.io/data-anonymization-tool/dp-queries-lp:latest
+    pull_policy: always
     ports:
-      - "5009:5009"
+      - "5010:5010"
     environment:
       - FLASK_ENV=development
       - FLASK_APP=dp-queries-lp.py
       - FLASK_RUN_HOST=0.0.0.0
-      - FLASK_RUN_PORT=5009
+      - FLASK_RUN_PORT=5010
     volumes:
       - ./dp-queries-lp:/app
     networks:
@@ -164,13 +174,14 @@ services:
 
   dp-queries-ep:
     image: ghcr.io/data-anonymization-tool/dp-queries-ep:latest
+    pull_policy: always
     ports:
-      - "5010:5010"
+      - "5011:5011"
     environment:
       - FLASK_ENV=development
       - FLASK_APP=dp-queries-ep.py
       - FLASK_RUN_HOST=0.0.0.0
-      - FLASK_RUN_PORT=5010
+      - FLASK_RUN_PORT=5011
     volumes:
       - ./dp-queries-ep:/app
     networks:

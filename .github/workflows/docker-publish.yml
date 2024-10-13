@@ -8,6 +8,20 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        module: 
+          - k-anonymity
+          - t-closeness
+          - l-diversity
+          - gaussian-copula
+          - ctgan-synthesis
+          - tvae-synthesis
+          - dp-laplace
+          - dp-exponential
+          - dp-gaussian
+          - dp-queries-lp
+          - dp-queries-ep
 
     steps:
       - name: Checkout code
@@ -23,103 +37,13 @@ jobs:
           username: ${{ github.repository_owner }}
           password: ${{ secrets.GHCR_TOKEN_2 }}
 
-      - name: Build and push Docker image for k-anonymity
+      - name: Build and push Docker image for ${{ matrix.module }}
         uses: docker/build-push-action@v3
         with:
-          context: ./k-anonymity
-          file: ./k-anonymity/Dockerfile
+          context: ./${{ matrix.module }}
+          file: ./${{ matrix.module }}/Dockerfile
           push: true
-          tags: ghcr.io/${{ github.repository_owner }}/k-anonymity:latest
+          tags: ghcr.io/${{ github.repository_owner }}/${{ matrix.module }}:latest
           platforms: linux/amd64,linux/arm64
-
-      - name: Build and push Docker image for t-closeness
-        uses: docker/build-push-action@v3
-        with:
-          context: ./t-closeness
-          file: ./t-closeness/Dockerfile
-          push: true
-          tags: ghcr.io/${{ github.repository_owner }}/t-closeness:latest
-          platforms: linux/amd64,linux/arm64
-
-      - name: Build and push Docker image for l-diversity
-        uses: docker/build-push-action@v3
-        with:
-          context: ./l-diversity
-          file: ./l-diversity/Dockerfile
-          push: true
-          tags: ghcr.io/${{ github.repository_owner }}/l-diversity:latest
-          platforms: linux/amd64,linux/arm64
-
-      - name: Build and push Docker image for gaussian-copula
-        uses: docker/build-push-action@v3
-        with:
-          context: ./gaussian-copula
-          file: ./gaussian-copula/Dockerfile
-          push: true
-          tags: ghcr.io/${{ github.repository_owner }}/gaussian-copula:latest
-          platforms: linux/amd64,linux/arm64
-      
-      - name: Build and push Docker image for ctgan-synthesis
-        uses: docker/build-push-action@v3
-        with:
-          context: ./ctgan-synthesis
-          file: ./ctgan-synthesis/Dockerfile
-          push: true
-          tags: ghcr.io/${{ github.repository_owner }}/ctgan-synthesis:latest
-          platforms: linux/amd64,linux/arm64
-
-      - name: Build and push Docker image for tvae-synthesis
-        uses: docker/build-push-action@v3
-        with:
-          context: ./tvae-synthesis
-          file: ./tvae-synthesis/Dockerfile
-          push: true
-          tags: ghcr.io/${{ github.repository_owner }}/tvae-synthesis:latest
-          platforms: linux/amd64,linux/arm64
-
-      - name: Build and push Docker image for dp-laplace
-        uses: docker/build-push-action@v3
-        with:
-          context: ./dp-laplace
-          file: ./dp-laplace/Dockerfile
-          push: true
-          tags: ghcr.io/${{ github.repository_owner }}/dp-laplace:latest
-          platforms: linux/amd64,linux/arm64
-
-      - name: Build and push Docker image for dp-exponential
-        uses: docker/build-push-action@v3
-        with:
-          context: ./dp-exponential
-          file: ./dp-exponential/Dockerfile
-          push: true
-          tags: ghcr.io/${{ github.repository_owner }}/dp-exponential:latest
-          platforms: linux/amd64,linux/arm64
-
-      - name: Build and push Docker image for dp-gaussian
-        uses: docker/build-push-action@v3
-        with:
-          context: ./dp-gaussian
-          file: ./dp-gaussian/Dockerfile
-          push: true
-          tags: ghcr.io/${{ github.repository_owner }}/dp-gaussian:latest
-          platforms: linux/amd64,linux/arm64
-
-      - name: Build and push Docker image for dp-queries-lp
-        uses: docker/build-push-action@v3
-        with:
-          context: ./dp-queries-lp
-          file: ./dp-queries-lp/Dockerfile
-          push: true
-          tags: ghcr.io/${{ github.repository_owner }}/dp-queries-lp:latest
-          platforms: linux/amd64,linux/arm64
-
-      - name: Build and push Docker image for dp-queries-ep
-        uses: docker/build-push-action@v3
-        with:
-          context: ./dp-queries-ep
-          file: ./dp-queries-ep/Dockerfile
-          push: true
-          tags: ghcr.io/${{ github.repository_owner }}/dp-queries-ep:latest
-          platforms: linux/amd64,linux/arm64
-
-      # Add more steps for other modules similarly
+          cache-from: type=registry,ref=ghcr.io/${{ github.repository_owner }}/${{ matrix.module }}:cache
+          cache-to: type=registry,ref=ghcr.io/${{ github.repository_owner }}/${{ matrix.module }}:cache,mode=max

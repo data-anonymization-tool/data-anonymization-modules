@@ -19,10 +19,10 @@ RUN pip install --no-cache-dir -r requirements.txt
 # CMD ["flask","run"]
 
 # Expose the port your Flask app will run on
-EXPOSE 5007
+EXPOSE 5008
 
 # Define environment variable for Flask
 ENV FLASK_APP=dp-exponential.py 
 
 # Command to run the Flask application
-CMD ["flask", "run", "--host=0.0.0.0", "--port=5007"]
+CMD ["flask", "run", "--host=0.0.0.0", "--port=5008"]

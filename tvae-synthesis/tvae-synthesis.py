@@ -29,13 +29,13 @@ def data_synthesis_tvae():
 
     columns_to_anonymize = request.form.get("Column to be anonymized")
     if columns_to_anonymize:
-        columns_to_anonymize = json.loads(columns_to_anonymize)
+        columns_to_anonymize = [col.strip() for col in columns_to_anonymize.split(",")]
     else:
         columns_to_anonymize = []
 
     identifying_attributes = request.form.get("Direct Identifier Columns")
     if identifying_attributes:
-        identifying_attributes = json.loads(identifying_attributes)
+        identifying_attributes = [attr.strip() for attr in identifying_attributes.split(",")]
     else:
         identifying_attributes = []
 
