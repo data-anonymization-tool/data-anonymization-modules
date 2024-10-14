@@ -1,12 +1,8 @@
 {
     "Grouping Based": {
-        "k-anonymity": [
-            "k-anonymity"
-        ],
-        "l-diversity": [
-            "l-diversity"
-        ],
-        "t-closeness": [
+        "Data Aggregation": [
+            "k-anonymity",
+            "l-diversity",
             "t-closeness"
         ]
     },
