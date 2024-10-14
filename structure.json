@@ -1,32 +1,82 @@
 {
     "Grouping Based": {
-        "Data Aggregation": [
-            "k-anonymity",
-            "l-diversity",
-            "t-closeness"
-        ]
+        "Data Aggregation": {
+            "k-anonymity" : {
+                "param1": { "label": "Column to be anonymized", "optional": false },
+                "param2": { "label": "Direct Identifier Columns", "optional": false },
+                "param3": { "label": "k", "optional": false }
+            },
+            "l-diversity":{
+                "param1": { "label": "Column to be anonymized", "optional": false },
+                "param2": { "label": "Direct Identifier Columns", "optional": false },
+                "param3": { "label": "l", "optional": false },
+                "param4": { "label": "k", "optional": false }
+            },
+            "t-closeness":{
+                "param1": { "label": "Column to be anonymized", "optional": false },
+                "param2": { "label": "Direct Identifier Columns", "optional": false },
+                "param3": { "label": "t", "optional": false },
+                "param4": { "label": "k", "optional": false }
+            }
+        }
     },
     "Differential Privacy": {
-        "Noise Injection Mechanisms": [
-            "Laplace Mechanism",
-            "Exponential Mechanism",
-            "Gaussian Mechanism"
-        ],
-        "Differentially Private Queries": [
-            "Differentially Private Queries using Laplace",
-            "Differentially Private Queries using Exponential"
-        ]
+        "Noise Injection Mechanisms": {
+            "Laplace Mechanism":{
+                "param1": { "label": "Column to be anonymized", "optional": false },
+                "param2": { "label": "Direct Identifier Columns", "optional": false },
+                "param3": { "label": "Sensitivity", "optional": false },
+                "param4": { "label": "Epsilon", "optional": false }
+            },
+            "Exponential Mechanism":{
+                "param1": { "label": "Column to be anonymized", "optional": false },
+                "param2": { "label": "Direct Identifier Columns", "optional": false },
+                "param3": { "label": "Sensitivity", "optional": false },
+                "param4": { "label": "Epsilon", "optional": false }
+            },
+            "Gaussian Mechanism":{
+                "param1": { "label": "Column to be anonymized", "optional": false },
+                "param2": { "label": "Direct Identifier Columns", "optional": false },
+                "param3": { "label": "Sensitivity", "optional": false },
+                "param4": { "label": "Epsilon", "optional": false },
+                "param5": { "label": "Delta", "optional": false }
+            }
+        },
+        "Differentially Private Queries": {
+            "Differentially Private Queries using Laplace":{
+                "param1": { "label": "Column to be anonymized", "optional": false },
+                "param2": { "label": "Condition Value", "optional": false },
+                "param3": { "label": "Epsilon", "optional": false },
+                "queryOptions": [
+                    "sum", "count", "mean", "median", "mode", "variance", "std_dev", "All Queries"
+                ]
+            },
+            "Differentially Private Queries using Exponential":{
+                "param1": { "label": "Column to be anonymized", "optional": false },
+                "param2": { "label": "Epsilon", "optional": false },
+                "param3": { "label": "k", "optional": true }, 
+                "param4": { "label": "Column 2", "optional": true },
+                 "queryOptions": [
+                    "frequency", "mode", "entropy", "contingency", "top-k", "All Queries"
+                ]
+            }
+        }
     },
     "Data Synthesis": {
-        "CTGAN Synthesis": [
-            "CTGAN Synthesis"
-        ],
-        "Gaussian Copula": [
-            "Gaussian Copula"
-        ],
-        "TVAE Synthesis": [
-            "TVAE Synthesis"
-        ]
+        "Synthetic Data Generation": {
+            "CTGAN Synthesis":{
+                "param1": { "label": "Columns to be anonymized", "optional": false },
+                "param2": { "label": "Direct Identifier Columns", "optional": false }
+            },
+            "Gaussian Copula":{
+                "param1": { "label": "Columns to be anonymized", "optional": false },
+                "param2": { "label": "Direct Identifier Columns", "optional": false }
+            },
+            "TVAE Synthesis":{
+                "param1": { "label": "Columns to be anonymized", "optional": false },
+                "param2": { "label": "Direct Identifier Columns", "optional": false }
+            }
+        }
     },
     "bla": {
         "bla": [
