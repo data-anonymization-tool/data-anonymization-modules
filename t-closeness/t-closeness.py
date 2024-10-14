@@ -135,6 +135,10 @@ def build_anonymized_dataset(df, partitions, feature_columns, sensitive_column, 
             rows.append(row)
     return pd.DataFrame(rows)
 
+def remove_identifier_columns(df, identifier_columns):
+    """Remove identifier columns from the DataFrame."""
+    return df.drop(columns=identifier_columns, errors='ignore')
+
 @app.route('/t-closeness/metadata', methods=['GET'])
 def get_metadata():
     return send_file('t-closeness.json', as_attachment=False)
@@ -159,11 +163,14 @@ def anonymize():
         # Get the parameters from the request
         k = int(request.form.get('k', 3))
         p = float(request.form.get('p', 0.2))
-        feature_columns = request.form.getlist('Column to be anonymized')
-        sensitive_column = request.form.get('Direct Identifier Columns')
+        identifier_columns = [col.strip() for col in request.form.getlist('Direct Identifier Columns', '').split(',')]
+        feature_columns = [col.strip() for col in request.form.get('Quasi Identifier Columns', '').split(',')]
+        sensitive_column = request.form.get('Column to be anonymized').strip()
 
         # Load the dataset
         df = pd.read_csv(file_path)
+
+        df = remove_identifier_columns(df, identifier_columns)
 
         global categorical
         categorical = detect_categorical_columns(df)
