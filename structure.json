@@ -212,31 +212,5 @@
                 }
             }
         }
-    },
-    "bla": {
-        "bla": [
-            "clan"
-        ]
-    },
-    "pool": {
-        "pool": [
-            "pool",
-            "poool",
-            "plo",
-            "cool"
-        ]
-    },
-    "hello": {
-        "hello": [
-            "hellothere"
-        ]
-    },
-    "anjana": {
-        "anajana": [
-            "anjana"
-        ]
-    },
-    "hbla": {
-        "hbla": []
     }
 }
