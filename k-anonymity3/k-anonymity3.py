@@ -1,0 +1,1 @@
+@app.route('/k-anonymity3', methods=['POST'])
