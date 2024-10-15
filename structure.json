@@ -225,5 +225,10 @@
             "plo",
             "cool"
         ]
+    },
+    "hello": {
+        "hello": [
+            "hellothere"
+        ]
     }
 }
