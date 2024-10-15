@@ -11,5 +11,6 @@
     "Differentially Private Queries using Laplace": "http://127.0.0.1:5010/dp-queries-lp",
     "Differentially Private Queries using Exponential": "http://127.0.0.1:5011/dp-queries-ep",
     "pool": "http://127.0.0.1:5011/cool",
-    "hello": "http://127.0.0.1:5012/hellothere"
+    "hello": "http://127.0.0.1:5012/hellothere",
+    "anajana": "http://127.0.0.1:5013/anjana"
 }
