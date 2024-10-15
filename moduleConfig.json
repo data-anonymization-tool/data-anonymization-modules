@@ -11,5 +11,6 @@
     "Differentially Private Queries using Laplace": "http://127.0.0.1:5010/dp-queries-lp",
     "Differentially Private Queries using Exponential": "http://127.0.0.1:5011/dp-queries-ep",
     "hbla": "http://127.0.0.1:5011/aggregationbla",
-    "hblan": "http://127.0.0.1:5012/nisha"
+    "hblan": "http://127.0.0.1:5012/nisha",
+    "Data Aggregation": "http://127.0.0.1:5013/k-anonymity2"
 }
