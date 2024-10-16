@@ -179,7 +179,7 @@ def anonymize():
         except ValueError:
             return jsonify({"error": "Invalid value for k. Must be a positive integer."}), 400
 
-        identifier_columns = [col.strip() for col in request.form.getlist('Direct Identifier Columns', '').split(',')]
+        identifier_columns = [col.strip() for col in request.form.get('Direct Identifier Columns', '').split(',')]
         feature_columns = [col.strip() for col in request.form.get('Quasi Identifier Columns', '').split(',')]
         sensitive_column = request.form.get('Column to be anonymized').strip()
 

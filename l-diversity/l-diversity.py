@@ -137,7 +137,7 @@ def anonymize():
     # Get parameters from the request
     k = int(request.form.get('k', 3))
     l = int(request.form.get('l', 2))
-    identifier_columns = [col.strip() for col in request.form.getlist('Direct Identifier Columns', '').split(',')]
+    identifier_columns = [col.strip() for col in request.form.get('Direct Identifier Columns', '').split(',')]
     feature_columns = [col.strip() for col in request.form.get('Quasi Identifier Columns', '').split(',')]
     sensitive_column = request.form.get('Column to be anonymized').strip()
 
