@@ -12,5 +12,6 @@
     "Differentially Private Queries using Exponential": "http://127.0.0.1:5011/dp-queries-ep",
     "test": "http://127.0.0.1:5012/test5",
     "helloyoiu": "http://127.0.0.1:5012/youhello",
-    "yh3": "http://127.0.0.1:5013/yh1"
+    "yh3": "http://127.0.0.1:5013/yh1",
+    "load": "http://127.0.0.1:5014/load"
 }
