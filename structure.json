@@ -249,7 +249,8 @@
     "load": {
         "load": [
             "load",
-            "load2"
+            "load2",
+            "load3"
         ]
     },
     "yh3": {
