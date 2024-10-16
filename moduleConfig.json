@@ -13,5 +13,6 @@
     "test": "http://127.0.0.1:5012/test5",
     "helloyoiu": "http://127.0.0.1:5012/youhello",
     "yh3": "http://127.0.0.1:5013/yh1",
-    "load": "http://127.0.0.1:5014/load"
+    "load": "http://127.0.0.1:5014/load",
+    "yh2": "http://127.0.0.1:5015/yh2"
 }
