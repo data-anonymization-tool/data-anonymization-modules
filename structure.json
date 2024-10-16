@@ -248,7 +248,8 @@
     },
     "load": {
         "load": [
-            "load"
+            "load",
+            "load2"
         ]
     },
     "yh3": {
