@@ -22,21 +22,23 @@ if not os.path.exists(UPLOAD_FOLDER):
 if not os.path.exists(ANONYMIZED_FOLDER):
     os.makedirs(ANONYMIZED_FOLDER)
 
-def exponential_mechanism(choices, utility_func, sensitivity, epsilon):
-    scores = np.array([utility_func(choice) for choice in choices])
+def exponential_mechanism(choices, utility_scores, sensitivity, epsilon):
+    scores = utility_scores - np.max(utility_scores)
     probabilities = np.exp(epsilon * scores / (2 * sensitivity))
-    probabilities /= probabilities.sum()  # Normalize to create a probability distribution
+    total_prob = probabilities.sum()
+    if total_prob == 0 or np.isnan(total_prob) or np.isinf(total_prob):
+        raise ValueError("Invalid probability distribution: total probability is zero, NaN, or Inf.")
+    
+    probabilities /= total_prob
     selected_choice = np.random.choice(choices, p=probabilities)
     return selected_choice
 
 def apply_exponential_mechanism(df, column, sensitivity, epsilon):
     print(f"Applying Exponential mechanism to the categorical column '{column}'")
-    unique_values = df[column].unique()
-    
-    def utility_func(value):
-        return df[column].value_counts().get(value, 0)
-    
-    df[column] = df[column].apply(lambda x: exponential_mechanism(unique_values, utility_func, sensitivity, epsilon))
+    unique_values, counts = np.unique(df[column].values, return_counts=True)
+    utility_scores = np.log(counts + 1e-6)  
+    selected_values = np.array([exponential_mechanism(unique_values, utility_scores, sensitivity, epsilon) for _ in range(len(df))])
+    df[column] = selected_values
     return df
 
 @app.route('/dp-exponential/metadata', methods=['GET'])
