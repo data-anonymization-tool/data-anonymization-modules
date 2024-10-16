@@ -221,7 +221,8 @@
     },
     "bhello": {
         "bhello": {
-            "bhello": "{\n    \"bhello\": {\n        \"param1\": {\n            \"label\": \"Columns to be anonymized\",\n            \"optional\": false\n        },\n        \"param2\": {\n            \"label\": \"Direct Identifier Columns\",\n            \"optional\": false\n        }\n    }\n}"
+            "bhello": "{\n    \"bhello\": {\n        \"param1\": {\n            \"label\": \"Columns to be anonymized\",\n            \"optional\": false\n        },\n        \"param2\": {\n            \"label\": \"Direct Identifier Columns\",\n            \"optional\": false\n        }\n    }\n}",
+            "bhello4": "{\n    \"bhello4\": {\n        \"param1\": {\n            \"label\": \"Columns to be anonymized\",\n            \"optional\": false\n        },\n        \"param2\": {\n            \"label\": \"Direct Identifier Columns\",\n            \"optional\": false\n        }\n    }\n}"
         }
     }
 }
