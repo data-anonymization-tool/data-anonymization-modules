@@ -962,7 +962,8 @@
                 "245": {
                     "0": "}"
                 }
-            }
+            },
+            "b5": "{\n    \"b5\": {\n        \"param1\": {\n            \"label\": \"Columns to be anonymized\",\n            \"optional\": false\n        },\n        \"param2\": {\n            \"label\": \"Direct Identifier Columns\",\n            \"optional\": false\n        }\n    }\n}"
         }
     }
 }
