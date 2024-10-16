@@ -19,6 +19,7 @@ services:
       - dp-gaussian
       - dp-queries-lp
       - dp-queries-ep
+      - frontend
     networks:
       - data-anonymization-tool-network
 
@@ -66,7 +67,6 @@ services:
       - ./t-closeness:/app
     networks:
       - data-anonymization-tool-network
-
   gaussian-copula:
     image: ghcr.io/data-anonymization-tool/gaussian-copula:latest
     pull_policy: always
@@ -186,6 +186,17 @@ services:
       - ./dp-queries-ep:/app
     networks:
       - data-anonymization-tool-network
+
+  frontend:
+    pull_policy: always
+    image: ghcr.io/data-anonymization-tool/data-anonymization-ui:latest
+    ports:
+      - "3000:80"
+    restart: always
+    environment:
+      - REACT_APP_GITHUB_TOKEN=${REACT_APP_GITHUB_TOKEN}
+    networks:
+      - frontend
 
 networks:
   frontend:

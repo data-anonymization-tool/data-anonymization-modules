@@ -9,13 +9,5 @@
     "Exponential Mechanism": "http://127.0.0.1:5008/dp-exponential",
     "Gaussian Mechanism": "http://127.0.0.1:5009/dp-gaussian",
     "Differentially Private Queries using Laplace": "http://127.0.0.1:5010/dp-queries-lp",
-    "Differentially Private Queries using Exponential": "http://127.0.0.1:5011/dp-queries-ep",
-    "test": "http://127.0.0.1:5012/test5",
-    "helloyoiu": "http://127.0.0.1:5012/youhello",
-    "yh3": "http://127.0.0.1:5016/yh22",
-    "load": "http://127.0.0.1:5017/load3",
-    "yh2": "http://127.0.0.1:5015/yh2",
-    "yh33": "http://127.0.0.1:5016/yh33",
-    "loader": "http://127.0.0.1:5017/loader",
-    "loader2": "http://127.0.0.1:5018/loader2"
+    "Differentially Private Queries using Exponential": "http://127.0.0.1:5011/dp-queries-ep"
 }
