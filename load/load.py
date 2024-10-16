@@ -1,0 +1,1 @@
+@app.route('/load', methods=['POST'])
