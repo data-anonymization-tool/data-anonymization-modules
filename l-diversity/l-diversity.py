@@ -66,7 +66,7 @@ def partition_dataset(df, feature_columns, sensitive_column, scale, is_valid, k,
         spans = get_spans(df[feature_columns], partition, scale)
         for column, span in sorted(spans.items(), key=lambda x: -x[1]):
             lp, rp = split(df, partition, column)
-            if not is_valid(df, lp, sensitive_column, k, l) or not is_valid(df, rp, sensitive_column, k, l):
+            if not is_valid(df, lp) or not is_valid(df, rp):
                 continue
             partitions.extend((lp, rp))
             break
@@ -157,8 +157,8 @@ def anonymize():
     # Apply partitioning method
     finished_l_diverse_partitions = partition_dataset(
         df, feature_columns, sensitive_column, full_spans,
-        lambda *args: is_k_anonymous(*args) and is_l_diverse(*args),
-        k, l
+    lambda df, partition: is_k_anonymous(df, partition, sensitive_column, k) and is_l_diverse(df, partition, sensitive_column, l),
+    k, l
     )
 
     # Build the anonymized dataset

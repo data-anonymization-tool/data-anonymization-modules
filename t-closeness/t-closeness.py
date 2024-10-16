@@ -53,7 +53,7 @@ def split(df, partition, column):
         return (dfl, dfr)
 
 # Function to partition the dataset into k-anonymous subsets
-def partition_dataset(df, feature_columns, sensitive_column, scale, is_valid, global_freqs,k, p):
+def partition_dataset(df, feature_columns, sensitive_column, scale, is_valid, global_freqs,k, t):
     finished_partitions = []
     partitions = [df.index]
     print("In partition_dataset: ",global_freqs)
@@ -62,7 +62,7 @@ def partition_dataset(df, feature_columns, sensitive_column, scale, is_valid, gl
         spans = get_spans(df[feature_columns], partition, scale)
         for column, span in sorted(spans.items(), key=lambda x: -x[1]):
             lp, rp = split(df, partition, column)
-            if not is_valid(df, lp, sensitive_column, global_freqs,k, p) or not is_valid(df, rp, sensitive_column, global_freqs, k, p):
+            if not is_valid(df, lp, sensitive_column, global_freqs,k, t) or not is_valid(df, rp, sensitive_column, global_freqs, k, t):
                 continue
             partitions.extend((lp, rp))
             break
@@ -71,7 +71,7 @@ def partition_dataset(df, feature_columns, sensitive_column, scale, is_valid, gl
     return finished_partitions
 
 # Function to check if a partition is k-anonymous
-def is_k_anonymous(df, partition, sensitive_column, global_freqs, k, p):
+def is_k_anonymous(df, partition, sensitive_column, global_freqs, k, t):
     if len(partition) < k:
         return False
     return True
@@ -95,17 +95,17 @@ def t_closeness(df, partition, column, global_freqs):
     d_max = None
     group_counts = df.loc[partition].groupby(column, observed=False)[column].agg('count')
     for value, count in group_counts.to_dict().items():
-        p = count / total_count
-        d = abs(p - global_freqs[value])
+        t = count / total_count
+        d = abs(t - global_freqs[value])
         if d_max is None or d > d_max:
             d_max = d
     return d_max
 
-def is_t_close(df, partition, sensitive_column, global_freqs, k, p):
+def is_t_close(df, partition, sensitive_column, global_freqs, k, t):
     print("In is_t_close: ",global_freqs)
     if not sensitive_column in categorical:
         raise ValueError("This method only works for categorical values.")
-    return t_closeness(df, partition, sensitive_column, global_freqs) <= p
+    return t_closeness(df, partition, sensitive_column, global_freqs) <= t
 
 # Function to build the anonymized dataset
 def build_anonymized_dataset(df, partitions, feature_columns, sensitive_column, max_partitions=None):
@@ -162,7 +162,7 @@ def anonymize():
 
         # Get the parameters from the request
         k = int(request.form.get('k', 3))
-        p = float(request.form.get('p', 0.2))
+        t = float(request.form.get('t', 0.2))
         identifier_columns = [col.strip() for col in request.form.get('Direct Identifier Columns', '').split(',')]
         feature_columns = [col.strip() for col in request.form.get('Quasi Identifier Columns', '').split(',')]
         sensitive_column = request.form.get('Column to be anonymized').strip()
@@ -194,15 +194,15 @@ def anonymize():
         group_counts = df.groupby(sensitive_column, observed=False)[sensitive_column].agg('count')
         
         for value, count in group_counts.to_dict().items():
-            p = count / total_count
-            global_freqs[value] = p
+            t = count / total_count
+            global_freqs[value] = t
 
         # Partition dataset into k-anonymous subsets with t-closeness
         finished_t_close_partitions = partition_dataset(df, feature_columns, 
                                                         sensitive_column, 
                                                         full_spans, 
                                                         lambda *args: is_k_anonymous(*args) and 
-                                                                      is_t_close(*args),global_freqs,k,p)
+                                                                      is_t_close(*args),global_freqs,k,t)
 
         # Build anonymized dataset from the k-anonymous partitions
         dft = build_anonymized_dataset(df, finished_t_close_partitions, feature_columns, sensitive_column)
