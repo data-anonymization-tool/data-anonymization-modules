@@ -212,36 +212,5 @@
                 }
             }
         }
-    },
-    "shakira": {
-        "rihanna": {
-            "b3": {
-                "param1": {
-                    "label": "Columns to be anonymized",
-                    "optional": false
-                },
-                "param2": {
-                    "label": "Direct Identifier Columns",
-                    "optional": false
-                }
-            }
-        }
-    },
-    "Shakira": {
-        "Rihanna": {
-            "b612": "{\n  \"param1\": {\n    \"label\": \"Columns to be anonymized\",\n    \"optional\": false\n  },\n  \"param2\": {\n    \"label\": \"Direct Identifier Columns\",\n    \"optional\": false\n  }\n}",
-            "b613": "{\n  \"param1\": {\n    \"label\": \"Columns to be anonymized\",\n    \"optional\": false\n  },\n  \"param2\": {\n    \"label\": \"Direct Identifier Columns\",\n    \"optional\": false\n  }\n}",
-            "b614": "\"{\\n  \\\"param1\\\": {\\n    \\\"label\\\": \\\"Columns to be anonymized\\\",\\n    \\\"optional\\\": false\\n  },\\n  \\\"param2\\\": {\\n    \\\"label\\\": \\\"Direct Identifier Columns\\\",\\n    \\\"optional\\\": false\\n  }\\n}\"",
-            "b615": {
-                "param1": {
-                    "label": "Columns to be anonymized",
-                    "optional": false
-                },
-                "param2": {
-                    "label": "Direct Identifier Columns",
-                    "optional": false
-                }
-            }
-        }
     }
 }
