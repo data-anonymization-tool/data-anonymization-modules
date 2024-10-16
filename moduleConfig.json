@@ -16,5 +16,6 @@
     "load": "http://127.0.0.1:5017/load3",
     "yh2": "http://127.0.0.1:5015/yh2",
     "yh33": "http://127.0.0.1:5016/yh33",
-    "loader": "http://127.0.0.1:5017/loader"
+    "loader": "http://127.0.0.1:5017/loader",
+    "loader2": "http://127.0.0.1:5018/loader2"
 }
