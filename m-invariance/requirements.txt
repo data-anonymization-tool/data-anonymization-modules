@@ -1,0 +1,6 @@
+Flask
+pandas
+Werkzeug
+numpy
+Flask-Cors
+openpyxl
