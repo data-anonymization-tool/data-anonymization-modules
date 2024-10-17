@@ -9,5 +9,6 @@
     "Exponential Mechanism": "http://127.0.0.1:5008/dp-exponential",
     "Gaussian Mechanism": "http://127.0.0.1:5009/dp-gaussian",
     "Differentially Private Queries using Laplace": "http://127.0.0.1:5010/dp-queries-lp",
-    "Differentially Private Queries using Exponential": "http://127.0.0.1:5011/dp-queries-ep"
+    "Differentially Private Queries using Exponential": "http://127.0.0.1:5011/dp-queries-ep",
+    "m-invariance": "http://127.0.0.1:5011/m-invariance"
 }
