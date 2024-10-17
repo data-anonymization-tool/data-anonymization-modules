@@ -62,6 +62,16 @@
                     "label": "Quasi Identifier Columns",
                     "optional": false
                 }
+            },
+            "m-invariance": {
+                "param1": {
+                    "label": "Columns to be anonymized",
+                    "optional": false
+                },
+                "param2": {
+                    "label": "Direct Identifier Columns",
+                    "optional": false
+                }
             }
         }
     },
