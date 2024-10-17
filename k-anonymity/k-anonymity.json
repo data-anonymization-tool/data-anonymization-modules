@@ -13,7 +13,11 @@
       },
       "Direct identifier columns": {
         "description": "A list of columns that serve as direct identifiers.",
-        "type": "Array of Strings"
+        "type": "Comma-separated Strings"
+      },
+      "Quasi Identifier Columns": {
+        "description": "A list of columns that can potentially be used to identify an individual when combined.",
+        "type": "Comma-separated Strings"
       },
       "k":{
         "description": "The minimum number of records in each group (equivalence class) sharing the same quasi-identifiers to prevent re-identification.",

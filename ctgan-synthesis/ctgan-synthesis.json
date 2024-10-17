@@ -7,13 +7,13 @@
         "description": "The input containing the tabular data to be anonymized.",
         "type": "CSV file"
       },
-      "Column to be anonymized": {
+      "Columns to be anonymized": {
         "description": "The name of the column with numerical data that requires anonymization.",
-        "type": "String"
+        "type": "String or Comma-separated Strings"
       },
       "Direct identifier columns": {
         "description": "A list of columns that serve as direct identifiers that need to be dropped from the output.",
-        "type": "Array of Strings"
+        "type": "Comma-separated Strings"
       }
     }, 
     "application_Platform": "CTGAN can be applied in scenarios requiring synthetic data generation, such as data augmentation, testing, and privacy-preserving data sharing in industries like finance and healthcare.",

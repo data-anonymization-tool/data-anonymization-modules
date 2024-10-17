@@ -13,7 +13,7 @@
       },
       "Direct identifier columns": {
         "description": "A list of columns that serve as direct identifiers.",
-        "type": "Array of Strings"
+        "type": "Comma-separated Strings"
       },
       "Sensitivity": {
         "description": "The sensitivity of the query, representing the maximum change in the output caused by the inclusion or exclusion of a single record.",

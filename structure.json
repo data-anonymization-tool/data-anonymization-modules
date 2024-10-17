@@ -188,7 +188,7 @@
                 },
                 "param2": {
                     "label": "Direct Identifier Columns",
-                    "optional": false
+                    "optional": true
                 }
             },
             "Gaussian Copula": {
@@ -198,7 +198,7 @@
                 },
                 "param2": {
                     "label": "Direct Identifier Columns",
-                    "optional": false
+                    "optional": true
                 }
             },
             "TVAE Synthesis": {
@@ -208,7 +208,7 @@
                 },
                 "param2": {
                     "label": "Direct Identifier Columns",
-                    "optional": false
+                    "optional": true
                 }
             }
         }

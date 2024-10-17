@@ -13,7 +13,11 @@
       },
       "Direct identifier columns": {
         "description": "A list of columns that serve as direct identifiers.",
-        "type": "Array of Strings"
+        "type": "Comma-separated Strings"
+      },
+      "Quasi Identifier Columns": {
+        "description": "A list of columns that can potentially be used to identify an individual when combined.",
+        "type": "Comma-separated Strings"
       },
       "t":{
         "description": "The maximum allowable difference between the distribution of sensitive attributes in a group and the overall dataset to protect against attribute disclosure.",

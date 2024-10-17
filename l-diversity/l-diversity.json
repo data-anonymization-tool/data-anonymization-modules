@@ -13,7 +13,11 @@
       },
       "Direct identifier columns": {
         "description": "A list of columns that serve as direct identifiers.",
-        "type": "Array of Strings"
+        "type": "Comma-separated Strings"
+      },
+      "Quasi Identifier Columns": {
+        "description": "A list of columns that can potentially be used to identify an individual when combined.",
+        "type": "Comma-separated Strings"
       },
       "l":{
         "description": "The minimum number of distinct sensitive attribute values within each group to protect against homogeneity and background knowledge attacks.",
