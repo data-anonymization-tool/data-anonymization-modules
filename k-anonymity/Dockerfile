@@ -8,13 +8,16 @@ WORKDIR /app
 # COPY requirements.txt .
 
 # Copy the current directory contents into the container at /app
+# Copy the requirements.txt file into the container
+COPY requirements.txt .
+COPY k-anonymity.py .
 COPY . /app
 
 # Install the dependencies
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy the rest of the application code into the container
-# COPY k-anonymity.py .
+
 
 # Run the Flask app
 # CMD ["flask", "run"]
