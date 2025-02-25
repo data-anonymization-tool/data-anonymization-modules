@@ -11,9 +11,9 @@ services:
       - k-anonymity
       - l-diversity
       - t-closeness
-      - gaussian-copula
-      - ctgan-synthesis
-      - tvae-synthesis
+      #- gaussian-copula
+      #- ctgan-synthesis
+      #- tvae-synthesis
       - dp-laplace
       - dp-exponential
       - dp-gaussian
@@ -31,10 +31,10 @@ services:
     environment:
       - FLASK_ENV=development
       - FLASK_APP=k-anonymity.py
-      - FLASK_RUN_HOST=0.0.0.0
-      - FLASK_RUN_PORT=5001
-    volumes:
-      - ./k-anonymity:/app
+      #- FLASK_RUN_HOST=0.0.0.0
+      #- FLASK_RUN_PORT=5001
+    #volumes:
+      #- ./k-anonymity:/app
     networks:
       - data-anonymization-tool-network
 
@@ -46,10 +46,10 @@ services:
     environment:
       - FLASK_ENV=development
       - FLASK_APP=l-diversity.py
-      - FLASK_RUN_HOST=0.0.0.0
-      - FLASK_RUN_PORT=5002
-    volumes:
-      - ./l-diversity:/app
+      #- FLASK_RUN_HOST=0.0.0.0
+      #- FLASK_RUN_PORT=5002
+    #volumes:
+      #- ./l-diversity:/app
     networks:
       - data-anonymization-tool-network
 
@@ -61,56 +61,57 @@ services:
     environment:
       - FLASK_ENV=development
       - FLASK_APP=t-closeness.py
-      - FLASK_RUN_HOST=0.0.0.0
-      - FLASK_RUN_PORT=5003
-    volumes:
-      - ./t-closeness:/app
+      #- FLASK_RUN_HOST=0.0.0.0
+      #- FLASK_RUN_PORT=5003
+    #volumes:
+      #- ./t-closeness:/app
     networks:
       - data-anonymization-tool-network
-  gaussian-copula:
-    image: ghcr.io/data-anonymization-tool/gaussian-copula:latest
-    pull_policy: always
-    ports:
-      - "5004:5004"
-    environment:
-      - FLASK_ENV=development
-      - FLASK_APP=gaussian-copula.py
-      - FLASK_RUN_HOST=0.0.0.0
-      - FLASK_RUN_PORT=5004
-    volumes:
-      - ./gaussian-copula:/app
-    networks:
-      - data-anonymization-tool-network
+  
+  #gaussian-copula:
+    #image: ghcr.io/data-anonymization-tool/gaussian-copula:latest
+    #pull_policy: always
+    #ports:
+      #- "5004:5004"
+    #environment:
+      #- FLASK_ENV=development
+      #- FLASK_APP=gaussian-copula.py
+      #- FLASK_RUN_HOST=0.0.0.0
+      #- FLASK_RUN_PORT=5004
+    #volumes:
+      #- ./gaussian-copula:/app
+    #networks:
+      #- data-anonymization-tool-network
 
-  ctgan-synthesis:
-    image: ghcr.io/data-anonymization-tool/ctgan-synthesis:latest
-    pull_policy: always
-    ports:
-      - "5005:5005"
-    environment:
-      - FLASK_ENV=development
-      - FLASK_APP=ctgan-synthesis.py
-      - FLASK_RUN_HOST=0.0.0.0
-      - FLASK_RUN_PORT=5005
-    volumes:
-      - ./ctgan-synthesis:/app
-    networks:
-      - data-anonymization-tool-network
+  #ctgan-synthesis:
+    #image: ghcr.io/data-anonymization-tool/ctgan-synthesis:latest
+    #pull_policy: always
+    #ports:
+      #- "5005:5005"
+    #environment:
+      #- FLASK_ENV=development
+      #- FLASK_APP=ctgan-synthesis.py
+      #- FLASK_RUN_HOST=0.0.0.0
+      #- FLASK_RUN_PORT=5005
+    #volumes:
+      #- ./ctgan-synthesis:/app
+    #networks:
+      #- data-anonymization-tool-network
 
-  tvae-synthesis:
-    image: ghcr.io/data-anonymization-tool/tvae-synthesis:latest
-    pull_policy: always
-    ports:
-      - "5006:5006"
-    environment:
-      - FLASK_ENV=development
-      - FLASK_APP=tvae-synthesis.py
-      - FLASK_RUN_HOST=0.0.0.0
-      - FLASK_RUN_PORT=5006
-    volumes:
-      - ./tvae-synthesis:/app
-    networks:
-      - data-anonymization-tool-network
+  #tvae-synthesis:
+    #image: ghcr.io/data-anonymization-tool/tvae-synthesis:latest
+    #pull_policy: always
+    #ports:
+      #- "5006:5006"
+    #environment:
+      #- FLASK_ENV=development
+      #- FLASK_APP=tvae-synthesis.py
+      #- FLASK_RUN_HOST=0.0.0.0
+      #- FLASK_RUN_PORT=5006
+    #volumes:
+      #- ./tvae-synthesis:/app
+    #networks:
+      #- data-anonymization-tool-network
 
   dp-laplace:
     image: ghcr.io/data-anonymization-tool/dp-laplace:latest
@@ -120,10 +121,10 @@ services:
     environment:
       - FLASK_ENV=development
       - FLASK_APP=dp-laplace.py
-      - FLASK_RUN_HOST=0.0.0.0
-      - FLASK_RUN_PORT=5007
-    volumes:
-      - ./dp-laplace:/app
+      #- FLASK_RUN_HOST=0.0.0.0
+      #- FLASK_RUN_PORT=5007
+    #volumes:
+      #- ./dp-laplace:/app
     networks:
       - data-anonymization-tool-network
 
@@ -135,10 +136,10 @@ services:
     environment:
       - FLASK_ENV=development
       - FLASK_APP=dp-exponential.py
-      - FLASK_RUN_HOST=0.0.0.0
-      - FLASK_RUN_PORT=5008
-    volumes:
-      - ./dp-exponential:/app
+      #- FLASK_RUN_HOST=0.0.0.0
+      #- FLASK_RUN_PORT=5008
+    #volumes:
+      #- ./dp-exponential:/app
     networks:
       - data-anonymization-tool-network
 
@@ -150,10 +151,10 @@ services:
     environment:
       - FLASK_ENV=development
       - FLASK_APP=dp-gaussian.py
-      - FLASK_RUN_HOST=0.0.0.0
-      - FLASK_RUN_PORT=5009
-    volumes:
-      - ./dp-gaussian:/app
+      #- FLASK_RUN_HOST=0.0.0.0
+      #- FLASK_RUN_PORT=5009
+    #volumes:
+      #- ./dp-gaussian:/app
     networks:
       - data-anonymization-tool-network
 
@@ -165,10 +166,10 @@ services:
     environment:
       - FLASK_ENV=development
       - FLASK_APP=dp-queries-lp.py
-      - FLASK_RUN_HOST=0.0.0.0
-      - FLASK_RUN_PORT=5010
-    volumes:
-      - ./dp-queries-lp:/app
+      #- FLASK_RUN_HOST=0.0.0.0
+      #- FLASK_RUN_PORT=5010
+    #volumes:
+      #- ./dp-queries-lp:/app
     networks:
       - data-anonymization-tool-network
 
@@ -180,10 +181,10 @@ services:
     environment:
       - FLASK_ENV=development
       - FLASK_APP=dp-queries-ep.py
-      - FLASK_RUN_HOST=0.0.0.0
-      - FLASK_RUN_PORT=5011
-    volumes:
-      - ./dp-queries-ep:/app
+      #- FLASK_RUN_HOST=0.0.0.0
+      #- FLASK_RUN_PORT=5011
+    #volumes:
+      #- ./dp-queries-ep:/app
     networks:
       - data-anonymization-tool-network
 
